@@ -125,7 +125,7 @@
                                 <feature>spring-tx/4.2.9.RELEASE_1</feature>
                                 <feature>spring-jms/4.1.9.RELEASE_1</feature>
                                 <feature>spring-jms/4.2.9.RELEASE_1</feature>
-                                <feature>spring-jms/4.0.7.RELEASE_3</feature>
+                                <feature>spring-jms/4.0.9.RELEASE_1</feature>
                                 <feature>spring-jms/3.2.18.RELEASE_1</feature>
                                 <feature>jetty</feature>
                                 <feature>webconsole</feature>
