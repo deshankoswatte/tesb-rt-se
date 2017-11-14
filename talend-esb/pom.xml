@@ -536,6 +536,16 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>wss4j-policy-${wss4j.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <!-- TESB-20613 exclude spring 4.x from spring-legacy feature xml -->
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.features</groupId>
+                                    <artifactId>spring-legacy</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <type>xml</type>
+                                    <classifier>features</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>spring-legacy-${karaf.version}-features.xml</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -841,6 +851,21 @@
                                     <replacefilter
                                         token="commons-collections/commons-collections/3.2.1"
                                         value="commons-collections/commons-collections/${commons-collections.version}"/>
+                                </replace>
+                                <!-- TESB-20613 exclude spring 4.x from spring-legacy feature xml -->
+                                <replace file="target/dependencies/spring-legacy-${karaf.version}-features.xml">
+                                    <replacefilter
+                                        token="&lt;!-- Spring 4.0.x support --&gt;"
+                                        value="&lt;!-- Spring 4.0.x support --&gt; &lt;!--"/>
+                                    <replacefilter
+                                        token="&lt;!-- Spring 4.1.x support --&gt;"
+                                        value="--&gt; &lt;!-- Spring 4.1.x support --&gt; &lt;!--"/>
+                                    <replacefilter
+                                        token="&lt;!-- Spring 4.2.x support --&gt;"
+                                        value="--&gt; &lt;!-- Spring 4.2.x support --&gt; &lt;!--"/>
+                                    <replacefilter
+                                        token="&lt;!-- Spring Security support --&gt;"
+                                        value="--&gt; &lt;!-- Spring Security support --&gt;"/>
                                 </replace>
                             </target>
                         </configuration>
