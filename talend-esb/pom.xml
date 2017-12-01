@@ -528,6 +528,24 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>spring-legacy-${karaf.version}-features.xml</destFileName>
                                 </artifactItem>
+                                <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.features</groupId>
+                                    <artifactId>standard</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <classifier>features</classifier>
+                                    <type>xml</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>standard-${karaf.version}-features.xml</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.jaas</groupId>
+                                    <artifactId>org.apache.karaf.jaas.modules</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <classifier>TESB</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.karaf.jaas.modules-${karaf.version}-TESB.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -840,6 +858,12 @@
                                     <replacefilter
                                         token="&lt;!-- Spring Security support --&gt;"
                                         value="--&gt; &lt;!-- Spring Security support  --&gt;"/>
+                                </replace>
+                                <replace file="target/dependencies/standard-${karaf.version}-features.xml">
+                                    <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
+                                    <replacefilter
+                                        token="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}&lt;"
+                                        value="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}/jar/TESB&lt;"/>
                                 </replace>
                             </target>
                         </configuration>
