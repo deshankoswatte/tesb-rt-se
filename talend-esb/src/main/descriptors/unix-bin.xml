@@ -207,6 +207,7 @@
                 <!-- commons-collections version patch (TESB-16945) -->
                 <exclude>system/org/ops4j/pax/web/pax-web-features/${pax-web.version}/pax-web-features-${pax-web.version}-features.xml</exclude>
                 <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
+                <!-- patch karaf standard features (TESB-20841) -->
                 <exclude>system/org/apache/karaf/features/standard/${karaf.version}/standard-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}/org.apache.karaf.jaas.modules-${karaf.version}.jar</exclude>
                 <exclude>README</exclude>
@@ -380,6 +381,7 @@
                 <!-- exclude the spring 4.x from spring-legacy feature xml (TESB-20613) -->
                 <exclude>org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
                 <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
+                <!-- patch karaf standard features (TESB-20841) -->
                 <exclude>org/apache/karaf/features/standard/${karaf.version}/standard-${karaf.version}-features.xml</exclude>
                 <exclude>org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}/org.apache.karaf.jaas.modules-${karaf.version}.jar</exclude>
             </excludes>
@@ -522,12 +524,7 @@
             <lineEnding>unix</lineEnding>
         </file>
         <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
-        <file>
-            <source>${basedir}/target/dependencies/standard-${karaf.version}-features.xml</source>
-            <outputDirectory>/container/system/org/apache/karaf/features/standard/${karaf.version}/</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-        <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
+        <!-- patch karaf standard features (TESB-20841) -->
         <file>
             <source>${basedir}/target/dependencies/standard-${karaf.version}-features.xml</source>
             <outputDirectory>/container/system/org/apache/karaf/features/standard/${karaf.version}/</outputDirectory>

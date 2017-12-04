@@ -864,6 +864,10 @@
                                     <replacefilter
                                         token="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}&lt;"
                                         value="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}/jar/TESB&lt;"/>
+                                    <!-- patch jetty version (TESB-20841) -->
+                                    <replacefilter
+                                        token="9.3.15.v20161220"
+                                        value="${jetty.version}"/>
                                 </replace>
                             </target>
                         </configuration>
