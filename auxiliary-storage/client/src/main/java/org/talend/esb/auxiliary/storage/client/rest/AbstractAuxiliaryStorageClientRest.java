@@ -26,7 +26,7 @@ import org.talend.esb.auxiliary.storage.rest.security.AuxiliaryStorageRestClient
 
 public abstract class AbstractAuxiliaryStorageClientRest<E> extends AuxiliaryStorageRestClientSecurityProvider {
 
-	private static final String NO_REST_SERVER = "None of the auxiliary storage REST server(s) is available. ";
+    private static final String NO_REST_SERVER = "None of the auxiliary storage REST server(s) is available. ";
 
     private String[] serverURLs;
 
@@ -37,11 +37,11 @@ public abstract class AbstractAuxiliaryStorageClientRest<E> extends AuxiliarySto
     private WebClient cachedClient = null;
 
     private ReentrantLock lock = new ReentrantLock();
-    
+
     public AbstractAuxiliaryStorageClientRest() {
-    	super();
+        super();
     }
-    
+
     public AbstractAuxiliaryStorageClientRest(Properties props) {
         super(props);
     }
@@ -77,14 +77,14 @@ public abstract class AbstractAuxiliaryStorageClientRest<E> extends AuxiliarySto
     }
 
     protected void switchServerURL(String usedUrl, Exception exception) {
-    	try {
-    		switchServerURL(usedUrl);
-    	} catch (RuntimeException e) {
-    		if (NO_REST_SERVER.equals(e.getMessage())) {
-    			throw new RuntimeException(NO_REST_SERVER, exception);
-    		}
-    		throw e;
-    	}
+        try {
+            switchServerURL(usedUrl);
+        } catch (RuntimeException e) {
+            if (NO_REST_SERVER.equals(e.getMessage())) {
+                throw new RuntimeException(NO_REST_SERVER, exception);
+            }
+            throw e;
+        }
     }
 
     private void useAnotherURL() {
