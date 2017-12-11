@@ -7,4 +7,6 @@ public interface  AuxiliaryObjectFactory<E> {
 	public E unmarshallObject(String marshalledData);
 
 	public String createObjectKey(E ctx);
+
+	public String contentType();
 }

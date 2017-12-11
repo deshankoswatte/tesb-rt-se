@@ -86,21 +86,26 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
 
     private String saveObject(final E ctx, final boolean retry) {
 
-        String key = findAuxiliaryObjectFactory().createObjectKey(ctx);
+        AuxiliaryObjectFactory<E> auxObjectFactory = findAuxiliaryObjectFactory();
+        String key = auxObjectFactory.createObjectKey(ctx);
 
         if (key == null || key.isEmpty()) {
             throw new IllegalParameterException("Object key can't be empty");
         }
 
         WebClient client = getWebClient()
-                .accept(MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON)
+                .type(auxObjectFactory.contentType())
                 .path(CALL_PATH, key);
 
         try{
-            Response resp = client.put(findAuxiliaryObjectFactory().marshalObject(ctx));
-            if (resp.getStatus() == 404) {
+            Response resp = client.put(auxObjectFactory.marshalObject(ctx));
+            int status = resp.getStatus();
+            if (status >= 400) {
             	if (!retry) {
-            		return null;
+            		if (status == 404) {
+            		    return null;
+            		}
+            		throw new IllegalStateException("Upload failed with HTTP status " + status);
             	}
                 if (null != client) {
                     client.reset();
