@@ -101,12 +101,12 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
             Response resp = client.put(auxObjectFactory.marshalObject(ctx));
             int status = resp.getStatus();
             if (status >= 400) {
-            	if (!retry) {
-            		if (status == 404) {
-            		    return null;
-            		}
-            		throw new IllegalStateException("Upload failed with HTTP status " + status);
-            	}
+                if (!retry) {
+                    if (status == 404) {
+                        return null;
+                    }
+                    throw new IllegalStateException("Upload failed with HTTP status " + status);
+                }
                 if (null != client) {
                     client.reset();
                 }
@@ -126,7 +126,7 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
                 return saveObject(ctx);
             }
             if (e instanceof RuntimeException) {
-            	throw (RuntimeException) e;
+                throw (RuntimeException) e;
             }
             throw new IllegalStateException("Upload failed: ", e);
         } finally {
@@ -165,7 +165,7 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
                 return lookupObject(contextKey, false);
             }
             if (e instanceof RuntimeException) {
-            	throw (RuntimeException) e;
+                throw (RuntimeException) e;
             }
             throw new IllegalStateException("Lookup failed: ", e);
         } finally {
