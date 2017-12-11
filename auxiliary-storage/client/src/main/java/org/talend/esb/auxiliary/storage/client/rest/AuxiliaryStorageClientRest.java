@@ -81,7 +81,7 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
 
     @Override
     public String saveObject(E ctx) {
-    	return saveObject(ctx, true);
+        return saveObject(ctx, true);
     }
 
     private String saveObject(final E ctx, final boolean retry) {
@@ -101,6 +101,10 @@ public class AuxiliaryStorageClientRest<E> extends AbstractAuxiliaryStorageClien
             Response resp = client.put(auxObjectFactory.marshalObject(ctx));
             int status = resp.getStatus();
             if (status >= 400) {
+                if (status == 409) {
+                    // HTTP conflict is considered as "call context is saved already".
+                    return key;
+                }
                 if (!retry) {
                     if (status == 404) {
                         return null;
