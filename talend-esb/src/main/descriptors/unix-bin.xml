@@ -566,6 +566,21 @@
             <outputDirectory>/container/system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-dataformat-smile-2.8.7.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.8.7/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-dataformat-xml-2.8.7.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.8.7/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-module-afterburner-2.8.7.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/module/jackson-module-afterburner/2.8.7/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
     </files>
 
     <dependencySets>
