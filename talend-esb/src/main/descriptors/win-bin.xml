@@ -560,18 +560,18 @@
             <fileMode>0644</fileMode>
         </file>
         <file>
-            <source>${basedir}/target/dependencies/jackson-dataformat-smile-2.8.8.jar</source>
-            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.8.8/</outputDirectory>
+            <source>${basedir}/target/dependencies/jackson-dataformat-smile-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/${fasterxml.jackson.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <file>
-            <source>${basedir}/target/dependencies/jackson-dataformat-xml-2.8.8.jar</source>
-            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.8.8/</outputDirectory>
+            <source>${basedir}/target/dependencies/jackson-dataformat-xml-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/${fasterxml.jackson.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <file>
-            <source>${basedir}/target/dependencies/jackson-module-afterburner-2.8.8.jar</source>
-            <outputDirectory>/container/system/com/fasterxml/jackson/module/jackson-module-afterburner/2.8.8/</outputDirectory>
+            <source>${basedir}/target/dependencies/jackson-module-afterburner-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/module/jackson-module-afterburner/${fasterxml.jackson.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>
