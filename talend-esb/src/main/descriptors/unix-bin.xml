@@ -581,6 +581,11 @@
             <outputDirectory>/container/system/com/fasterxml/jackson/module/jackson-module-afterburner/${fasterxml.jackson.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
+        <file>
+            <source>${basedir}/target/dependencies/camel-kafka-${camel-kafka.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-kafka/${camel-kafka.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
     </files>
 
     <dependencySets>
