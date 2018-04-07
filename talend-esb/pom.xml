@@ -42,6 +42,7 @@
         <pax-logging.version>1.10.1</pax-logging.version>
         <fasterxml.jackson.version>2.8.8</fasterxml.jackson.version>
         <camel-kafka.version>2.17.6.tesb1</camel-kafka.version>
+        <camel-jetty9.version>2.17.6.tesb1</camel-jetty9.version>
 	</properties>
 
 	<dependencies>
@@ -599,6 +600,14 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-kafka-${camel-kafka.version}.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-jetty9</artifactId>
+                                    <version>${camel-jetty9.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-jetty9-${camel-jetty9.version}.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -867,6 +876,10 @@
                                     <replacefilter
                                         token="org.apache.camel/camel-kafka/${camel.version}&lt;"
                                         value="org.apache.camel/camel-kafka/${camel-kafka.version}&lt;"/>
+                                    <!-- patch for camel-jetty9 (TESB-21781) -->
+                                    <replacefilter
+                                        token="org.apache.camel/camel-jetty9/${camel.version}&lt;"
+                                        value="org.apache.camel/camel-jetty9/${camel-jetty9.version}&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
