@@ -286,10 +286,10 @@
     <bundle>mvn:org.talend.esb.sts/org.talend.esb.sts.config/${project.version}</bundle>
   </feature>
 
-  <feature name="camel-talendjob" version="${project.version}">
+  <feature name="camel-talendjob" version="${project.version}.tesb1">
     <feature version="${camel.version}">camel-core</feature>
     <feature version='${project.version}'>talend-job-api</feature>
-    <bundle>mvn:org.talend.camel/camel-talendjob/${project.version}</bundle>
+    <bundle>mvn:org.talend.camel/camel-talendjob/${project.version}.tesb1</bundle>
   </feature>
 
   <feature name='tesb-jmx-http-agent' version='${project.version}'>

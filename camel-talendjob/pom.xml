@@ -11,12 +11,18 @@
     <artifactId>camel-talendjob</artifactId>
     <packaging>bundle</packaging>
     <name>Talend ESB :: Camel Talend Job Component</name>
+    <version>7.0.1.tesb1</version>
 
     <parent>
         <groupId>org.talend.esb</groupId>
         <artifactId>esb-parent</artifactId>
         <version>7.0.1</version>
     </parent>
+
+    <properties>
+        <tesb.version>7.0.1</tesb.version>
+        <packages.version>${tesb.version}</packages.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -33,7 +39,7 @@
         <dependency>
             <groupId>org.talend.esb.job</groupId>
             <artifactId>org.talend.esb.job.api</artifactId>
-            <version>${project.version}</version>
+            <version>${tesb.version}</version>
             <scope>provided</scope>
         </dependency>
 

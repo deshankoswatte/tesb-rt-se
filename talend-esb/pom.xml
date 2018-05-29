@@ -431,7 +431,7 @@
 								<feature>talend-job-controller</feature>
 								<feature>tesb-zookeeper-server</feature>
 								<feature>tesb-sts</feature>
-                                <feature>camel-talendjob</feature>
+                                <feature>camel-talendjob/7.0.1.tesb1</feature>
 								<feature>tesb-jmx-http-agent</feature>
 								<feature>tesb-encryptor-command</feature>
                                 <feature>tesb-policy-compression</feature>
