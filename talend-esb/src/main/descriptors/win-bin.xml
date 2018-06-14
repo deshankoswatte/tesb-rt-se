@@ -390,6 +390,7 @@
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
+                <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}/**</exclude>
             </excludes>
         </fileSet>
 
@@ -582,6 +583,11 @@
         <file>
             <source>${basedir}/target/dependencies/camel-jetty9-${camel-jetty9.version}.jar</source>
             <outputDirectory>/container/system/org/apache/camel/camel-jetty9/${camel-jetty9.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.servicemix.bundles.sparkjava-core-${sparkjava-core.version}.tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>

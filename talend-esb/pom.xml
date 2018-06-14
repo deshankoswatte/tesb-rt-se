@@ -43,6 +43,7 @@
         <fasterxml.jackson.version>2.8.8</fasterxml.jackson.version>
         <camel-kafka.version>2.17.6.tesb1</camel-kafka.version>
         <camel-jetty9.version>2.17.6.tesb1</camel-jetty9.version>
+        <sparkjava-core.version>2.3_1</sparkjava-core.version>
 	</properties>
 
 	<dependencies>
@@ -608,6 +609,14 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-jetty9-${camel-jetty9.version}.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.bundles</groupId>
+                                    <artifactId>org.apache.servicemix.bundles.sparkjava-core</artifactId>
+                                    <version>${sparkjava-core.version}.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.servicemix.bundles.sparkjava-core-${sparkjava-core.version}.tesb1.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -880,6 +889,9 @@
                                     <replacefilter
                                         token="org.apache.camel/camel-jetty9/${camel.version}&lt;"
                                         value="org.apache.camel/camel-jetty9/${camel-jetty9.version}&lt;"/>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}.tesb1&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
