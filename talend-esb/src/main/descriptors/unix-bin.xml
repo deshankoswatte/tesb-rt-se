@@ -390,6 +390,7 @@
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
+                <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}/**</exclude>
             </excludes>
         </fileSet>
 
@@ -557,6 +558,36 @@
         <file>
             <source>${basedir}/target/dependencies/pax-logging-log4j2-${pax-logging.version}-TESB.jar</source>
             <outputDirectory>/container/system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-dataformat-smile-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/${fasterxml.jackson.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-dataformat-xml-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/${fasterxml.jackson.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/jackson-module-afterburner-${fasterxml.jackson.version}.jar</source>
+            <outputDirectory>/container/system/com/fasterxml/jackson/module/jackson-module-afterburner/${fasterxml.jackson.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/camel-kafka-${camel-kafka.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-kafka/${camel-kafka.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/camel-jetty9-${camel-jetty9.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-jetty9/${camel-jetty9.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.servicemix.bundles.sparkjava-core-${sparkjava-core.version}.tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>
