@@ -119,6 +119,12 @@
     <server name="Apache Camel [Karaf]" version="2.15" include="2.10">
     </server>
 
+    <server name="Apache Camel [Karaf]" version="2.16" include="2.10">
+    </server>
+
+    <server name="Apache Camel [Karaf]" version="2.17" include="2.10">
+    </server>
+
     <server name="Apache Camel [Tomcat]" version="2.10" description="Route Server">
 
         <property name="PROC_HOME_PROPERTY" value="catalina.base" />
@@ -179,6 +185,12 @@
     </server>
 
     <server name="Apache Camel [Tomcat]" version="2.15" include="2.10">
+    </server>
+
+    <server name="Apache Camel [Tomcat]" version="2.16" include="2.10">
+    </server>
+
+    <server name="Apache Camel [Tomcat]" version="2.17" include="2.10">
     </server>
 
 </plugin>

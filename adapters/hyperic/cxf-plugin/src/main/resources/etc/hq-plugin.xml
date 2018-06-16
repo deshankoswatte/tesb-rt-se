@@ -25,30 +25,33 @@
 
     <filter name="domain" value="org.apache.cxf" />
 
-    <filter name="endpoint_object_name" value="${domain}:bus.id=*,type=Performance.Counter.Server,service=*,port=*,operation=*" />
+    <filter name="base_endpoint_name" value="${domain}:bus.id=*,type=Metrics.Server,service=*,port=*,Operation=*" />
+
+    <filter name="endpoint_object_name" value="${base_endpoint_name},Attribute=Totals" />
 
     <metrics name="endpoint">
         <metric name="Availability" indicator="true" template="${endpoint_object_name}:${alias}" />
 
-        <metric name="Total Handling Time" alias="TotalHandlingTime" template="${endpoint_object_name}:${alias}"
-            indicator="true" units="mu" category="PERFORMANCE" />
+        <metric name="Number of Invocations" template="${endpoint_object_name}:Count"
+            indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
 
-        <metric name="Number of Invocations" alias="NumInvocations" template="${endpoint_object_name}:${alias}"
+        <metric name="Mean Handling Time" template="${endpoint_object_name}:Mean"
+            indicator="true" units="ms" category="PERFORMANCE" />
+
+        <metric name="Number of Checked Application Faults" alias="Checked Application Faults" template="${base_endpoint_name},Attribute=${alias}:Count"
             indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
-        <metric name="Number of Checked Application Faults" alias="NumCheckedApplicationFaults" template="${endpoint_object_name}:${alias}"
+        <metric name="Number of Logical Runtime Faults" alias="Logical Runtime Faults" template="${base_endpoint_name},Attribute=${alias}:Count"
             indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
-        <metric name="Number of Logical Runtime Faults" alias="NumLogicalRuntimeFaults" template="${endpoint_object_name}:${alias}"
+        <metric name="Number of Runtime Faults" alias="Runtime Faults" template="${base_endpoint_name},Attribute=${alias}:Count"
             indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
-        <metric name="Number of Runtime Faults" alias="NumRuntimeFaults" template="${endpoint_object_name}:${alias}"
-            indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
-        <metric name="Number of UnChecked Application Faults" alias="NumUnCheckedApplicationFaults" template="${endpoint_object_name}:${alias}"
+        <metric name="Number of UnChecked Application Faults" alias="Unchecked Application Faults" template="${base_endpoint_name},Attribute=${alias}:Count"
             indicator="true" units="none" collectionType="trendsup" category="THROUGHPUT" />
     </metrics>
 
-    <server name="Apache CXF [Karaf]" version="2.7">
+    <server name="Apache CXF [Karaf]" version="3.1">
 
         <property name="PROC_HOME_PROPERTY" value="karaf.home" />
-        <property name="VERSION_FILE" value="**/.*cxf-rt-core-(2.\d*).*.jar" />
+        <property name="VERSION_FILE" value="**/.*cxf-core-(3.\d*).*.jar" />
 
 		<!-- <property name="INSTALLPATH" value="CXF Karaf" /> -->
 		<!-- <property name="KARAF_HOME" value="C:\talend-esb-4.0\container\bin"/> -->
@@ -65,7 +68,7 @@
         <property name="dynamic_field_pattern" value="(.*-cxf)[0-9]+" />
         <property name="dynamic_field_name" value="bus.id" />
         <property name="target_format" value="{}*" />
-        <property name="library_path" value="system/org/apache/cxf/cxf-rt-core" />
+        <property name="library_path" value="system/org/apache/cxf/cxf-core" />
 
         <config>
             <option name="jmx.url" description="JMX URL to MBeanServer"
@@ -82,14 +85,14 @@
         <metric name="Availability" indicator="true" />
 
         <service name="Services">
-            <property name="AUTOINVENTORY_NAME" value="CXF %service% %operation%" />
+            <property name="AUTOINVENTORY_NAME" value="CXF %service% %Operation%" />
             <property name="OBJECT_NAME" value="${endpoint_object_name}" />
 
             <config>
                 <option name="bus.id" description="CXF Bus ID" />
                 <option name="service" description="Service name" />
                 <option name="port" description="Port name" />
-                <option name="operation" description="Operation name" />
+                <option name="Operation" description="Operation name" />
             </config>
 
             <plugin type="autoinventory" />
@@ -99,17 +102,9 @@
         </service>
     </server>
 
-    <server name="Apache CXF [Karaf]" version="3.0" include="2.7">
-        <property name="VERSION_FILE" value="**/.*cxf-core-(3.\d*).*.jar" />
-        <property name="library_path" value="system/org/apache/cxf/cxf-core" />
-    </server>
-
-    <server name="Apache CXF [Karaf]" version="3.1" include="3.0">
-    </server>
-
-    <server name="Apache CXF [Tomcat]" version="2.7">
+    <server name="Apache CXF [Tomcat]" version="3.1">
         <property name="PROC_HOME_PROPERTY" value="catalina.home" />
-        <property name="VERSION_FILE" value="**/.*cxf-rt-core-(2.\d*).*.jar" />
+        <property name="VERSION_FILE" value="**/.*cxf-core-(3.\d*).*.jar" />
 
 		<!-- Common -->
         <property name="server_title" value="Apache CXF" />
@@ -137,14 +132,14 @@
         <metric name="Availability" indicator="true" />
 
         <service name="Services">
-            <property name="AUTOINVENTORY_NAME" value="CXF %service% %operation%" />
+            <property name="AUTOINVENTORY_NAME" value="CXF %service% %Operation%" />
             <property name="OBJECT_NAME" value="${endpoint_object_name}" />
 
             <config>
                 <option name="bus.id" description="CXF Bus ID" />
                 <option name="service" description="Service name" />
                 <option name="port" description="Port name" />
-                <option name="operation" description="Operation name" />
+                <option name="Operation" description="Operation name" />
             </config>
 
             <plugin type="autoinventory" />
@@ -152,13 +147,6 @@
 
             <metrics include="endpoint" />
         </service>
-    </server>
-
-    <server name="Apache CXF [Tomcat]" version="3.0" include="2.7">
-        <property name="VERSION_FILE" value="**/.*cxf-core-(3.\d*).*.jar" />
-    </server>
-
-    <server name="Apache CXF [Tomcat]" version="3.1" include="3.0">
     </server>
 
 </plugin>

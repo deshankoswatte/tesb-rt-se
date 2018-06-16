@@ -275,5 +275,8 @@
 
     <server name="Talend Runtime" version="6.1.5" include="6.0.0">
     </server>
+    
+    <server name="Talend Runtime" version="6.4.1" include="6.0.0">
+    </server>
 
 </plugin>
