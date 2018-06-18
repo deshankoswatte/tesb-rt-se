@@ -44,6 +44,7 @@
         <aries.blueprint.version>1.6.1</aries.blueprint.version>
         <xbean.spring.version>4.2</xbean.spring.version>
         <activemq.webconsole.version>5.14.2</activemq.webconsole.version>
+        <camel-cache.version>2.17.3.tesb1</camel-cache.version>
 	</properties>
 
 	<dependencies>
@@ -596,6 +597,14 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.modules-${karaf.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-cache</artifactId>
+                                    <version>${camel-cache.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-cache-${camel-cache.version}.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -863,6 +872,10 @@
                                     <replacefilter>
                                         <replacetoken>org.apache.camel/camel-core/${camel.version}&lt;</replacetoken> 
                                         <replacevalue>org.apache.camel/camel-core/${camel.version}/jar/TESB&lt;</replacevalue>
+                                    </replacefilter>
+                                    <replacefilter>
+                                        <replacetoken>org.apache.camel/camel-cache/${camel.version}&lt;</replacetoken> 
+                                        <replacevalue>org.apache.camel/camel-cache/${camel-cache.version}&lt;</replacevalue>
                                     </replacefilter>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->

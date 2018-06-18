@@ -588,6 +588,11 @@
             <outputDirectory>/container/system/org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
+        <file>
+            <source>${basedir}/target/dependencies/camel-cache-${camel-cache.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-cache/${camel-cache.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
     </files>
 
     <dependencySets>
