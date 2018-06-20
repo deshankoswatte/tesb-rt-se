@@ -23,7 +23,7 @@
 	<parent>
 		<groupId>org.talend.esb</groupId>
 		<artifactId>esb-parent</artifactId>
-		<version>7.1.0-SNAPSHOT</version>
+		<version>7.1.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.talend.esb.assembly</groupId>
@@ -42,6 +42,9 @@
         <pax-logging.version>1.10.1</pax-logging.version>
         <javax-annotation.version>1.3</javax-annotation.version>
         <qpid-jms.version>0.11.1</qpid-jms.version>
+        <fastjson.version>1.2.37_1</fastjson.version>
+        <sparkjava-core.version>2.6.0_1</sparkjava-core.version>
+        <mustache-compiler.version>0.9.5_1</mustache-compiler.version>
 	</properties>
 
 	<dependencies>
@@ -436,8 +439,6 @@
                                 <feature>decanter-appender-mongodb</feature>
                                 <feature>decanter-alerting-log</feature>
                                 <feature>decanter-alerting-email</feature>
-                                <feature>elasticsearch/6.1.1</feature>
-                                <feature>kibana/6.1.1</feature>
 								<!-- TESB Features -->
 								<feature>tesb-sam-agent</feature>
 								<feature>tesb-datasource-derby</feature>
@@ -646,6 +647,30 @@
                                     <type>jar</type>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>qpid-jms-client-${qpid-jms.version}-tesb1.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.bundles</groupId>
+                                    <artifactId>org.apache.servicemix.bundles.fastjson</artifactId>
+                                    <version>${fastjson.version}.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.servicemix.bundles.fastjson-${fastjson.version}.tesb1.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.bundles</groupId>
+                                    <artifactId>org.apache.servicemix.bundles.sparkjava-core</artifactId>
+                                    <version>${sparkjava-core.version}.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.servicemix.bundles.sparkjava-core-${sparkjava-core.version}.tesb1.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.bundles</groupId>
+                                    <artifactId>org.apache.servicemix.bundles.mustache-compiler</artifactId>
+                                    <version>${mustache-compiler.version}.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.servicemix.bundles.mustache-compiler-${mustache-compiler.version}.tesb1.jar</destFileName>
                                 </artifactItem>
                                 <!-- Patch jackson-databind version (TESB-21628) -->
                                 <artifactItem>
@@ -956,6 +981,15 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.qpid/qpid-jms-client/${qpid-jms.version}&lt;"
                                         value="&gt;mvn:org.apache.qpid/qpid-jms-client/${qpid-jms.version}-tesb1&lt;"/>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.fastjson/${fastjson.version}&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.fastjson/${fastjson.version}.tesb1&lt;"/>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}.tesb1&lt;"/>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.mustache-compiler/${mustache-compiler.version}&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.mustache-compiler/${mustache-compiler.version}.tesb1&lt;"/>
                                     <!-- Patch jackson-databind version (TESB-21628) -->
                                     <replacefilter
                                         token="&gt;mvn:com.fasterxml.jackson.core/jackson-databind/2.4.4&lt;"
@@ -1071,6 +1105,20 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	
