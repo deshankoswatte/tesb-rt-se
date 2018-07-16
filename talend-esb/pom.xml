@@ -41,7 +41,8 @@
         <pax-web.version>6.0.7</pax-web.version>
         <pax-logging.version>1.10.1</pax-logging.version>
         <fasterxml.jackson.version>2.8.8</fasterxml.jackson.version>
-        <camel-kafka.version>2.17.6.tesb1</camel-kafka.version>
+        <karaf-features-core.version>4.1.3.tesb1</karaf-features-core.version>
+        <camel-kafka.version>2.17.6.tesb2</camel-kafka.version>
         <camel-jetty9.version>2.17.6.tesb1</camel-jetty9.version>
         <sparkjava-core.version>2.3_1</sparkjava-core.version>
 	</properties>
@@ -504,6 +505,14 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.boot-${karaf.version}.jar</destFileName>
                                 </artifactItem>
+                               <artifactItem>
+                                    <groupId>org.apache.karaf.features</groupId>
+                                    <artifactId>org.apache.karaf.features.core</artifactId>
+                                    <version>${karaf-features-core.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.karaf.features.core-${karaf-features-core.version}.jar</destFileName>
+                                </artifactItem>
                                 <!-- commons-collections version patch (TESB-16945) -->
                                 <artifactItem>
                                     <groupId>org.ops4j.pax.web</groupId>
@@ -952,6 +961,9 @@
                                     <replacefilter
                                         token="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}&lt;"
                                         value="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}/jar/TESB&lt;"/>
+                                    <replacefilter
+                                        token="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}&lt;"
+                                        value="org.apache.karaf.features/org.apache.karaf.features.core/${karaf-features-core.version}&lt;"/>
                                     <!-- patch jetty version (TESB-20841) -->
                                     <replacefilter
                                         token="9.3.15.v20161220"
@@ -962,10 +974,23 @@
                                     <replacefilter
                                         token="org.ops4j.pax.logging/pax-logging-log4j2/${pax-logging.version}&lt;"
                                         value="org.ops4j.pax.logging/pax-logging-log4j2/${pax-logging.version}/jar/TESB&lt;"/>
+                                    <replacefilter
+                                        token="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}&lt;"
+                                        value="org.apache.karaf.features/org.apache.karaf.features.core/${karaf-features-core.version}&lt;"/>
                                 </replace>
                                 <replaceregexp byline="true"
                                         match="^(\s*mvn\\:org.ops4j.pax.logging/pax-logging-log4j2/${pax-logging.version})(\s*=.*)$"
                                         replace="\1/jar/TESB\2">
+                                    <fileset dir="target/dependencies/unix/apache-karaf-${karaf.version}/etc/">
+                                        <include name="startup.properties"/>
+                                    </fileset>
+                                    <fileset dir="target/dependencies/win/apache-karaf-${karaf.version}/etc/">
+                                        <include name="startup.properties"/>
+                                    </fileset>
+                                </replaceregexp>
+                                <replaceregexp byline="true"
+                                        match="^(\s*mvn\\:org.apache.karaf.features/org.apache.karaf.features.core/)${karaf.version}(\s*=.*)$"
+                                        replace="\1${karaf-features-core.version}\2">
                                     <fileset dir="target/dependencies/unix/apache-karaf-${karaf.version}/etc/">
                                         <include name="startup.properties"/>
                                     </fileset>
