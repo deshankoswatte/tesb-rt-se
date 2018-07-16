@@ -209,7 +209,7 @@
                 <!-- org.apache.karaf.jaas.modules patch (TESB-20557) -->
                 <!-- patch karaf standard features (TESB-20841) -->
                 <exclude>system/org/apache/karaf/features/standard/${karaf.version}/standard-${karaf.version}-features.xml</exclude>
-                <exclude>system/org/apache/karaf/features/org.apache.karaf.features.core/${karaf.version}/org.apache.karaf.features.core-${karaf.version}.jar</exclude>
+                <exclude>system/org/apache/karaf/features/org.apache.karaf.features.core/${karaf.version}/**</exclude>
                 <exclude>system/org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}/org.apache.karaf.jaas.modules-${karaf.version}.jar</exclude>
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>system/org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
