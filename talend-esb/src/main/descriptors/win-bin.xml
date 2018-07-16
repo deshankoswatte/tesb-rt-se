@@ -561,6 +561,11 @@
             <fileMode>0644</fileMode>
         </file>
         <file>
+            <source>${basedir}/target/dependencies/org.apache.karaf.features.core-${karaf-features-core.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/karaf/features/org.apache.karaf.features.core/${karaf-features-core.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
             <source>${basedir}/target/dependencies/jackson-dataformat-smile-${fasterxml.jackson.version}.jar</source>
             <outputDirectory>/container/system/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/${fasterxml.jackson.version}/</outputDirectory>
             <fileMode>0644</fileMode>
