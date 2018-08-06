@@ -392,6 +392,7 @@
                 <exclude>org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}/**</exclude>
+                <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
             </excludes>
         </fileSet>
 
@@ -595,6 +596,17 @@
             <source>${basedir}/target/dependencies/org.apache.servicemix.bundles.sparkjava-core-${sparkjava-core.version}.tesb1.jar</source>
             <outputDirectory>/container/system/org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.servicemix.bundles.xstream-1.4.10_1.jar</source>
+            <outputDirectory>/container/system/org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.10_1/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/activemq-karaf-${activemq.version}-features-core.xml</source>
+            <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+            <lineEnding>unix</lineEnding>
         </file>
     </files>
 
