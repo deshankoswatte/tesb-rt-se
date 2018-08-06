@@ -596,6 +596,23 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.modules-${karaf.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.activemq</groupId>
+                                    <artifactId>activemq-karaf</artifactId>
+                                    <version>${activemq.version}</version>
+                                    <type>xml</type>
+                                    <classifier>features-core</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>activemq-karaf-${activemq.version}-features-core.xml</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.bundles</groupId>
+                                    <artifactId>org.apache.servicemix.bundles.xstream</artifactId>
+                                    <version>1.4.10_1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.servicemix.bundles.xstream-1.4.10_1.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -864,6 +881,9 @@
                                         <replacetoken>org.apache.camel/camel-core/${camel.version}&lt;</replacetoken> 
                                         <replacevalue>org.apache.camel/camel-core/${camel.version}/jar/TESB&lt;</replacevalue>
                                     </replacefilter>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.8_1&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.10_1&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
@@ -926,6 +946,11 @@
                                     <replacefilter
                                         token="org.apache.xbean/xbean-spring/3.18"
                                         value="org.apache.xbean/xbean-spring/${xbean.spring.version}"/>
+                                </replace>
+                                <replace file="target/dependencies/activemq-karaf-${activemq.version}-features-core.xml">
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.8_1&lt;"
+                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.10_1&lt;"/>
                                 </replace>
                             </target>
                         </configuration>
