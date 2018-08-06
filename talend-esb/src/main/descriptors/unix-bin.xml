@@ -395,6 +395,7 @@
                 <!-- CXF patch (TESB-18699) -->
                 <exclude>org/apache/cxf/cxf-core/${cxf.version}/cxf-core-${cxf.version}.jar</exclude>
                 <exclude>org/apache/cxf/cxf-rt-transports-http/${cxf.version}/cxf-rt-transports-http-${cxf.version}.jar</exclude>
+                <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
             </excludes>
         </fileSet>
 
@@ -674,6 +675,17 @@
             <source>${basedir}/target/dependencies/cxf-rt-transports-http-${cxf.version}-TESB.jar</source>
             <outputDirectory>/container/system/org/apache/cxf/cxf-rt-transports-http/${cxf.version}/</outputDirectory>
             <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.servicemix.bundles.xstream-1.4.10_1.jar</source>
+            <outputDirectory>/container/system/org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.10_1/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/activemq-karaf-${activemq.version}-features-core.xml</source>
+            <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+            <lineEnding>unix</lineEnding>
         </file>
     </files>
 
