@@ -688,6 +688,14 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>cxf-rt-rs-service-description-swagger-${cxf.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-blueprint</artifactId>
+                                    <version>${camel.version}</version>
+                                    <classifier>tesb1</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-blueprint-${camel.version}-tesb1.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -970,6 +978,9 @@
                                     <replacefilter
                                         token="&gt;mvn:com.fasterxml.jackson.core/jackson-databind/2.6.1&lt;"
                                         value="&gt;mvn:com.fasterxml.jackson.core/jackson-databind/2.6.7.1&lt;"/>
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}&lt;"
+                                        value="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}/jar/tesb1&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"

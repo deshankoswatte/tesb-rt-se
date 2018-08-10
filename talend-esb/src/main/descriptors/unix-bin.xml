@@ -397,6 +397,7 @@
                 <exclude>org/apache/cxf/cxf-rt-rs-service-description-swagger-ui/${cxf.version}/**</exclude>
                 <exclude>org/apache/cxf/cxf-rt-rs-service-description-swagger/${cxf.version}/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
+                <exclude>org/apache/camel/camel-blueprint/${camel.version}/camel-blueprint-${camel.version}.jar</exclude>
             </excludes>
         </fileSet>
         <!-- Woraround for xjc-utils version (TESB-21746) -->
@@ -611,6 +612,11 @@
         <file>
             <source>${basedir}/target/dependencies/cxf-rt-rs-service-description-swagger-${cxf.version}-TESB.jar</source>
             <outputDirectory>/container/system/org/apache/cxf/cxf-rt-rs-service-description-swagger/${cxf.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/camel-blueprint-${camel.version}-tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-blueprint/${camel.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>
