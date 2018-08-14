@@ -27,7 +27,6 @@ import org.apache.cxf.interceptor.Interceptor;
 import org.apache.cxf.io.CachedOutputStream;
 import org.apache.cxf.io.CachedOutputStreamCallback;
 import org.apache.cxf.message.Message;
-import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
 
 /**
@@ -35,12 +34,10 @@ import org.apache.cxf.phase.Phase;
  * content. Additionally it registers an optional interceptor that is called as
  * soon as the output stream is closed
  */
-public class WireTapOut extends AbstractPhaseInterceptor<Message> {
+public class WireTapOut extends AbstractWireTap {
 
     private Interceptor<Message> wireTap;
-    private boolean logMessageContent;
 
-    private boolean logMessageContentOverride;
     /**
      * Instantiates a new wire tap out.
      *
@@ -48,10 +45,8 @@ public class WireTapOut extends AbstractPhaseInterceptor<Message> {
      * @param logMessageContent the log message content
      */
     public WireTapOut(Interceptor<Message> wireTap, boolean logMessageContent, boolean logMessageContentOverride) {
-        super(Phase.PRE_STREAM);
+        super(Phase.PRE_STREAM, logMessageContent, logMessageContentOverride);
         this.wireTap = wireTap;
-        this.logMessageContent = logMessageContent;
-        this.logMessageContentOverride = logMessageContentOverride;
     }
 
     /* (non-Javadoc)
@@ -79,8 +74,7 @@ public class WireTapOut extends AbstractPhaseInterceptor<Message> {
 
             message.setContent(OutputStream.class, newOut);
 
-            if (os != null && WireTapHelper
-                    .isMessageContentToBeLogged(message, logMessageContent, logMessageContentOverride)) {
+            if (os != null && isLogMessageContent(message)) {
                 message.setContent(CachedOutputStream.class, newOut);
             }
 

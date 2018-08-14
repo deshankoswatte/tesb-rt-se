@@ -40,19 +40,15 @@ import org.apache.cxf.phase.Phase;
  * the content to the CachedOutputStream and only then lets CXF
  * continue on the message.
  */
-public class WireTapIn extends AbstractPhaseInterceptor<Message> {
-    private boolean logMessageContent;
+public class WireTapIn extends AbstractWireTap {
 
-    private boolean logMessageContentOverride;
     /**
      * Instantiates a new WireTapIn
      *
      * @param logMessageContent the log message content
      */
     public WireTapIn(boolean logMessageContent, boolean logMessageContentOverride) {
-        super(Phase.RECEIVE);
-        this.logMessageContent = logMessageContent;
-        this.logMessageContentOverride = logMessageContentOverride;
+        super(Phase.RECEIVE, logMessageContent, logMessageContentOverride);
     }
 
     /* (non-Javadoc)
@@ -61,7 +57,7 @@ public class WireTapIn extends AbstractPhaseInterceptor<Message> {
     @Override
     public void handleMessage(final Message message) throws Fault {
         final InputStream is = message.getContent(InputStream.class);
-        if (WireTapHelper.isMessageContentToBeLogged(message, logMessageContent, logMessageContentOverride)) {
+        if (isLogMessageContent(message)) {
             if (null == is) {
                 Reader reader = message.getContent(Reader.class);
                 if (null != reader) {
