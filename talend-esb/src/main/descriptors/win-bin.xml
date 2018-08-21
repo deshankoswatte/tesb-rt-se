@@ -383,6 +383,8 @@
                 <!-- patch for activemq-camel (TESB-21136) -->
                 <exclude>org/apache/activemq/activemq-karaf/${activemq.version}/activemq-karaf-${activemq.version}-features.xml</exclude>
                 <exclude>org/apache/activemq/activemq-camel/${activemq.version}/**</exclude>
+                <exclude>org/apache/activemq/activemq-osgi/5.14.5/**</exclude>
+                <exclude>org/apache/activemq/activemq-osgi/${activemq.version}/**</exclude>
                 <exclude>org/apache/qpid/qpid-jms-client/${qpid-jms.version}/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.fastjson/${fastjson.version}/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}/**</exclude>
@@ -562,8 +564,13 @@
             <lineEnding>dos</lineEnding>
         </file>
         <file>
-            <source>${basedir}/target/dependencies/activemq-camel-${activemq.version}-tesb1.jar</source>
-            <outputDirectory>/container/system/org/apache/activemq/activemq-camel/${activemq.version}-tesb1/</outputDirectory>
+            <source>${basedir}/target/dependencies/activemq-camel-${activemq-camel.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/activemq/activemq-camel/${activemq-camel.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/activemq-osgi-${activemq-osgi.version}.jar</source>
+            <outputDirectory>/container/system/org/apache/activemq/activemq-osgi/${activemq-osgi.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <file>
