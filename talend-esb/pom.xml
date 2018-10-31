@@ -706,6 +706,27 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-blueprint-${camel.version}-tesb1.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for camel-dozer (TESB-23868) -->
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-dozer</artifactId>
+                                    <version>${camel.version}</version>
+                                    <classifier>TESB</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-dozer-${camel.version}-TESB.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.glassfish</groupId>
+                                    <artifactId>javax.el</artifactId>
+                                    <version>3.0.0</version>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.objenesis</groupId>
+                                    <artifactId>objenesis</artifactId>
+                                    <version>2.6</version>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -991,6 +1012,10 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}&lt;"
                                         value="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}/jar/tesb1&lt;"/>
+                                    <!-- patch for camel-dozer (TESB-23868) -->
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}&lt;"
+                                        value="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
@@ -1085,6 +1110,29 @@
                     </execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>xslt-transform</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                          <goal>transform</goal>
+                        </goals>
+                        <configuration>
+                            <transformationSets>
+                                <!-- patch for camel-dozer (TESB-23868) -->
+                                <transformationSet>
+                                    <dir>target/dependencies</dir>
+                                    <includes>apache-camel-${camel.version}-features.xml</includes>
+                                    <stylesheet>src/main/xsl/camel.xsl</stylesheet>
+                                </transformationSet>
+                            </transformationSets>
+                        </configuration>
+                    </execution>
+              </executions>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
