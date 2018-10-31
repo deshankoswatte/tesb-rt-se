@@ -395,6 +395,8 @@
                 <exclude>org/apache/karaf/decanter/apache-karaf-decanter/${decanter.version}/apache-karaf-decanter-${decanter.version}-features.xml</exclude>
                 <exclude>org/apache/karaf/decanter/appender/org.apache.karaf.decanter.appender.log/${decanter.version}/**</exclude>
                 <exclude>org/apache/karaf/decanter/collector/org.apache.karaf.decanter.collector.jms/${decanter.version}/**</exclude>
+                <!-- patch for camel-dozer (TESB-23868) -->
+                <exclude>org/apache/camel/camel-dozer/${camel.version}/camel-dozer-${camel.version}.jar</exclude>
             </excludes>
         </fileSet>
         <!-- Woraround for xjc-utils version (TESB-21746) -->
@@ -479,7 +481,7 @@
     <files>
         <!-- workaround for CXF version in Camel features file -->
         <file>
-            <source>${basedir}/target/dependencies/apache-camel-${camel.version}-features.xml</source>
+            <source>${basedir}/target/generated-resources/xml/xslt/apache-camel-${camel.version}-features.xml</source>
             <outputDirectory>/container/system/org/apache/camel/karaf/apache-camel/${camel.version}/</outputDirectory>
             <destName>apache-camel-${camel.version}-features.xml</destName>
             <fileMode>0644</fileMode>
@@ -627,6 +629,22 @@
         <file>
             <source>${basedir}/target/dependencies/org.apache.karaf.decanter.collector.jms-${decanter.version}.tesb1.jar</source>
             <outputDirectory>/container/system/org/apache/karaf/decanter/collector/org.apache.karaf.decanter.collector.jms/${decanter.version}.tesb1/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <!-- patch for camel-dozer (TESB-23868) -->
+        <file>
+            <source>${basedir}/target/dependencies/camel-dozer-${camel.version}-TESB.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-dozer/${camel.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/javax.el-3.0.0.jar</source>
+            <outputDirectory>/container/system/org/glassfish/javax.el/3.0.0/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/objenesis-2.6.jar</source>
+            <outputDirectory>/container/system/org/objenesis/objenesis/2.6/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>
