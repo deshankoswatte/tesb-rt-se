@@ -638,6 +638,11 @@
             <fileMode>0644</fileMode>
         </file>
         <file>
+            <source>${basedir}/target/dependencies/dozer-core-6.2.0.jar</source>
+            <outputDirectory>/container/system/com/github/dozermapper/dozer-core/6.2.0/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
             <source>${basedir}/target/dependencies/javax.el-3.0.0.jar</source>
             <outputDirectory>/container/system/org/glassfish/javax.el/3.0.0/</outputDirectory>
             <fileMode>0644</fileMode>
