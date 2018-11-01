@@ -1125,7 +1125,9 @@
                                 <!-- patch for camel-dozer (TESB-23868) -->
                                 <transformationSet>
                                     <dir>target/dependencies</dir>
-                                    <includes>apache-camel-${camel.version}-features.xml</includes>
+                                    <includes>
+                                        <include>apache-camel-${camel.version}-features.xml</include>
+                                    </includes>
                                     <stylesheet>src/main/xsl/camel.xsl</stylesheet>
                                 </transformationSet>
                             </transformationSets>
