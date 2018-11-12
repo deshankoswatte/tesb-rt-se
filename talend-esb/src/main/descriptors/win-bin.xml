@@ -396,6 +396,8 @@
                 <exclude>org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
+                <!-- patch for camel-salesforce (TESB-23603) -->
+                <exclude>org/apache/camel/camel-salesforce/${camel.version}/**</exclude>
             </excludes>
         </fileSet>
 
@@ -602,6 +604,12 @@
             <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
             <fileMode>0644</fileMode>
             <lineEnding>dos</lineEnding>
+        </file>
+        <!-- patch for camel-salesforce (TESB-23603) -->
+        <file>
+            <source>${basedir}/target/dependencies/camel-salesforce-${camel.version}-TESB.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-salesforce/${camel.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
         </file>
     </files>
 

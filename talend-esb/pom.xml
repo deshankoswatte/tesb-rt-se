@@ -631,6 +631,15 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.servicemix.bundles.xstream-1.4.10_1.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for camel-salesforce (TESB-23603) -->
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-salesforce</artifactId>
+                                    <version>${camel.version}</version>
+                                    <classifier>TESB</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-salesforce-${camel.version}-TESB.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -906,6 +915,10 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.8_1&lt;"
                                         value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.10_1&lt;"/>
+                                    <!-- patch for camel-salesforce (TESB-23603) -->
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.camel/camel-salesforce/${camel.version}&lt;"
+                                        value="&gt;mvn:org.apache.camel/camel-salesforce/${camel.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
