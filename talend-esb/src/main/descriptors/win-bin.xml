@@ -210,6 +210,8 @@
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>system/org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
+                <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
+                <exclude>system/org/apache/karaf/shell/org.apache.karaf.shell.ssh/${karaf.version}/**</exclude>
                 <exclude>README</exclude>
                 <exclude>RELEASE-NOTES</exclude>
                 <exclude>LICENSE</exclude>
@@ -397,6 +399,8 @@
                 <exclude>org/apache/karaf/decanter/collector/org.apache.karaf.decanter.collector.jms/${decanter.version}/**</exclude>
                 <!-- patch for camel-dozer (TESB-23868) -->
                 <exclude>org/apache/camel/camel-dozer/${camel.version}/camel-dozer-${camel.version}.jar</exclude>
+                <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
+                <exclude>org/apache/karaf/shell/org.apache.karaf.shell.ssh/${karaf.version}/**</exclude>
             </excludes>
         </fileSet>
         <!-- Woraround for xjc-utils version (TESB-21746) -->
@@ -650,6 +654,12 @@
         <file>
             <source>${basedir}/target/dependencies/objenesis-2.6.jar</source>
             <outputDirectory>/container/system/org/objenesis/objenesis/2.6/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.karaf.shell.ssh-${karaf.version}.tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/karaf/shell/org.apache.karaf.shell.ssh/${karaf.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>

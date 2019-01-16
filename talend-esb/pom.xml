@@ -768,6 +768,14 @@
                                     <version>2.6</version>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                 </artifactItem>
+                                <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.shell</groupId>
+                                    <artifactId>org.apache.karaf.shell.ssh</artifactId>
+                                    <version>${karaf.version}.tesb1</version>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.karaf.shell.ssh-${karaf.version}.tesb1.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -1101,6 +1109,10 @@
                                     <replacefilter
                                         token="9.3.21.v20170918"
                                         value="9.3.24.v20180605"/>
+                                    <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.karaf.shell/org.apache.karaf.shell.ssh/${karaf.version}&lt;"
+                                        value="&gt;mvn:org.apache.karaf.shell/org.apache.karaf.shell.ssh/${karaf.version}.tesb1&lt;"/>
                                 </replace>
                                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                                 <replace file="target/dependencies/framework-${karaf.version}-features.xml">
