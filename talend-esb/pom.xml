@@ -776,6 +776,15 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.shell.ssh-${karaf.version}.tesb1.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for camel-blueprint (TESB-24132) -->
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-blueprint</artifactId>
+                                    <version>${camel.version}</version>
+                                    <classifier>TESB</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-blueprint-${camel.version}-TESB.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -1059,6 +1068,10 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}&lt;"
                                         value="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}/jar/TESB&lt;"/>
+                                    <!-- patch for camel-blueprint (TESB-24132) -->
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}&lt;"
+                                        value="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
