@@ -34,7 +34,7 @@ public class EventAdminPublisher {
 
 	public static final String TOPIC = "org/talend/esb/sam/events";
 
-	private static EventAdmin eventAdmin = getEventAdmin(EventAdmin.class);
+	private static EventAdmin eventAdmin;
 
 	private static boolean isOSGiDeployment() {
         Bundle b = FrameworkUtil.getBundle(EventAdminPublisher.class);
@@ -58,6 +58,10 @@ public class EventAdminPublisher {
     }
 
 	public static void publish(List<Event> samEvents) throws Exception {
+		if (null == eventAdmin) {
+			eventAdmin = getEventAdmin(EventAdmin.class);
+		}
+
 		if (eventAdmin != null) {
 			for (Event samEvent : samEvents) {
 				eventAdmin.postEvent(SamEventTranslator.translate(samEvent, TOPIC));
