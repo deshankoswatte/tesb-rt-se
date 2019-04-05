@@ -24,6 +24,10 @@
         <relativePath>../pom.xml</relativePath>
 	</parent>
 
+    <properties>
+        <patch.suffix>TESB25256</patch.suffix>
+    </properties>
+
 	<dependencies>
 	    <dependency>
             <groupId>org.ops4j.pax.cdi</groupId>
@@ -91,6 +95,16 @@
             <artifactId>cxf-rt-ws-security</artifactId>
             <version>${cxf.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
 		<!-- Test dependencies -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -130,11 +144,18 @@
             <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 	<build>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-xjc-plugin</artifactId>
@@ -152,10 +173,18 @@
                                     <xsd>${basedir}/src/main/resources/schemas/locator-endpoint.xsd</xsd>
                                     <bindingFile>${basedir}/src/main/resources/schemas/locator-endpoint.xjb</bindingFile>
 									<catalog>${basedir}/src/main/build-resources/catalog.cat</catalog>
+                                    <extensionArgs>
+                                        <arg>-encoding</arg>
+                                        <arg>UTF-8</arg>
+                                    </extensionArgs>
                                 </xsdOption>
                                 <xsdOption>
                                     <xsd>${basedir}/src/main/resources/schemas/ws-addr.xsd</xsd>
                                     <bindingFile>${basedir}/src/main/resources/schemas/ws-addr.xjb</bindingFile>
+                                    <extensionArgs>
+                                        <arg>-encoding</arg>
+                                        <arg>UTF-8</arg>
+                                    </extensionArgs>
                                 </xsdOption>
                             </xsdOptions>
                         </configuration>
@@ -180,6 +209,7 @@
                             org.talend.esb.servicelocator.client.ExpiredEndpointCollector,
                             org.talend.esb.servicelocator.cxf.LocatorFeature
                         </Export-Service>
+                        <TESB-Version>${patch.suffix}</TESB-Version>
                     </instructions>
                 </configuration>
             </plugin>
