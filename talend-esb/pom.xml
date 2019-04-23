@@ -45,6 +45,7 @@
         <fastjson.version>1.2.37_1</fastjson.version>
         <sparkjava-core.version>2.6.0_1</sparkjava-core.version>
         <mustache-compiler.version>0.9.5_1</mustache-compiler.version>
+        <blueprint.core.version>1.8.3</blueprint.core.version>
 	</properties>
 
 	<dependencies>
@@ -785,6 +786,15 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-blueprint-${camel.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
+                                <artifactItem>
+                                    <groupId>org.apache.aries.blueprint</groupId>
+                                    <artifactId>org.apache.aries.blueprint.core</artifactId>
+                                    <version>${blueprint.core.version}</version>
+                                    <classifier>TESB</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.aries.blueprint.core-${blueprint.core.version}-TESB.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -1126,6 +1136,10 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.karaf.shell/org.apache.karaf.shell.ssh/${karaf.version}&lt;"
                                         value="&gt;mvn:org.apache.karaf.shell/org.apache.karaf.shell.ssh/${karaf.version}.tesb1&lt;"/>
+                                    <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
+                                    <replacefilter
+                                        token="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}&lt;"
+                                        value="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                                 <replace file="target/dependencies/framework-${karaf.version}-features.xml">

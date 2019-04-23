@@ -212,6 +212,8 @@
                 <exclude>system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
                 <!-- patch for org.apache.karaf.shell.ssh (TESB-24169) -->
                 <exclude>system/org/apache/karaf/shell/org.apache.karaf.shell.ssh/${karaf.version}/**</exclude>
+                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
+                <exclude>system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <exclude>README</exclude>
                 <exclude>RELEASE-NOTES</exclude>
                 <exclude>LICENSE</exclude>
@@ -403,6 +405,8 @@
                 <exclude>org/apache/karaf/shell/org.apache.karaf.shell.ssh/${karaf.version}/**</exclude>
                 <!-- patch for camel-blueprint (TESB-24132) -->
                 <exclude>org/apache/camel/camel-blueprint/${camel.version}/camel-blueprint-${camel.version}.jar</exclude>
+                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
+                <exclude>org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
             </excludes>
         </fileSet>
         <!-- Woraround for xjc-utils version (TESB-21746) -->
@@ -668,6 +672,12 @@
         <file>
             <source>${basedir}/target/dependencies/camel-blueprint-${camel.version}-TESB.jar</source>
             <outputDirectory>/container/system/org/apache/camel/camel-blueprint/${camel.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.aries.blueprint.core-${blueprint.core.version}-TESB.jar</source>
+            <outputDirectory>/container/system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
     </files>
