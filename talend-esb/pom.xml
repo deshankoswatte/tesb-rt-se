@@ -39,7 +39,7 @@
         <xerces.version>2.11.0_1</xerces.version>
         <log4j.version>1.2.17</log4j.version>
         <equinox.version>3.10.1.v20140909-1633</equinox.version>
-        <pax-web.version>6.0.3</pax-web.version>
+        <pax-web.version>6.0.12</pax-web.version>
         <jline.version>3.3.0</jline.version>
         <jansi.version>1.16</jansi.version>
         <pax-logging.version>1.9.1</pax-logging.version>
@@ -112,6 +112,7 @@
                                 <descriptor>mvn:org.apache.karaf.features/spring-legacy/${karaf.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.features/enterprise-legacy/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features</descriptor>
 <!--                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor> -->
 <!--                                 <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor> -->
 <!--                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor> -->
@@ -143,8 +144,9 @@
                                 <feature>jpa</feature>
                                 <feature>jndi</feature>
                                 <feature>jms</feature>
-                                <!-- pax-web version patch (TESB-19140) -->
-                                <feature>pax-jetty/9.3.14.v20161028</feature>
+                                <!-- pax-web version patch (TESB-25919) -->
+                                <feature>pax-jetty/${jetty.version}</feature>
+                                <feature>pax-web-core/${pax-web.version}</feature>
                                 <feature>pax-jetty-http2/${pax-web.version}</feature>
                                 <feature>pax-war/${pax-web.version}</feature>
                                 <!-- ActiveMQ Features -->
@@ -615,6 +617,15 @@
                                     <destFileName>camel-jetty9-${camel-jetty9.version}.jar</destFileName>
                                 </artifactItem>
                                 <artifactItem>
+                                    <groupId>org.apache.karaf.features</groupId>
+                                    <artifactId>spring-legacy</artifactId>
+                                    <version>${karaf.version}</version>
+                                    <classifier>features</classifier>
+                                    <type>xml</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>spring-legacy-${karaf.version}-features.xml</destFileName>
+                                </artifactItem>
+                                <artifactItem>
                                     <groupId>org.apache.activemq</groupId>
                                     <artifactId>activemq-karaf</artifactId>
                                     <version>${activemq.version}</version>
@@ -1011,6 +1022,13 @@
                                     <replacefilter
                                         token="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}&lt;"
                                         value="org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}/jar/TESB&lt;"/>
+                                    <!-- upgrade Jetty version to 9.3.27.v20190418 (TESB-25919) -->
+                                    <replacefilter
+                                        token="9.3.9.v20160517"
+                                        value="${jetty.version}"/>
+                                    <replacefilter
+                                        token="mvn:org.ops4j.pax.web/pax-web-features/6.0.3/xml/features"
+                                        value="mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features"/>
                                 </replace>
                                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                                 <replace file="target/dependencies/framework-${karaf.version}-features.xml">
@@ -1028,6 +1046,12 @@
                                         <include name="startup.properties"/>
                                     </fileset>
                                 </replaceregexp>
+                                <replace file="target/dependencies/spring-legacy-${karaf.version}-features.xml">
+                                    <!-- patch dependencies for jetty  version (TESB-25919) -->
+                                    <replacefilter
+                                        token="mvn:org.ops4j.pax.web/pax-web-features/6.0.3/xml/features"
+                                        value="mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features"/>
+                                </replace>
                                 <replace file="target/dependencies/activemq-karaf-${activemq.version}-features-core.xml">
                                     <replacefilter
                                         token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.8_1&lt;"
