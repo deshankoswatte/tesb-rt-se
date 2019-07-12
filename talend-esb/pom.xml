@@ -48,7 +48,7 @@
         <blueprint.core.version>1.8.3</blueprint.core.version>
 
         <camel-core.tesb.version>2.21.2.tesb2</camel-core.tesb.version>
-        <camel-blueprint.tesb.version>2.21.2.tesb1</camel-blueprint.tesb.version>
+        <camel-blueprint.tesb.version>2.21.2.tesb2</camel-blueprint.tesb.version>
         <camel-dozer.tesb.version>2.21.2.tesb1</camel-dozer.tesb.version>
 	</properties>
 
