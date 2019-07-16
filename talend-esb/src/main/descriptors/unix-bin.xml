@@ -625,6 +625,12 @@
             <outputDirectory>/container/system/org/apache/camel/camel-salesforce/${camel.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
+        <!-- patch for camel-cxf (TESB-25112) -->
+        <file>
+            <source>${basedir}/target/dependencies/camel-cxf-2.17.6.tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/camel/camel-cxf/2.17.6.tesb1/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
     </files>
 
     <dependencySets>

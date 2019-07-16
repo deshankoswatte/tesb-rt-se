@@ -651,6 +651,15 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-salesforce-${camel.version}-TESB.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for camel-cxf (TESB-25112) -->
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-cxf</artifactId>
+                                    <version>2.17.6.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>camel-cxf-2.17.6.tesb1.jar</destFileName>
+                                </artifactItem>
                             </artifactItems>
 						</configuration>
 					</execution>
@@ -930,6 +939,10 @@
                                     <replacefilter
                                         token="&gt;mvn:org.apache.camel/camel-salesforce/${camel.version}&lt;"
                                         value="&gt;mvn:org.apache.camel/camel-salesforce/${camel.version}/jar/TESB&lt;"/>
+                                    <!-- patch for camel-cxf (TESB-25112) -->
+                                    <replacefilter
+                                        token="&gt;mvn:org.apache.camel/camel-cxf/${camel.version}&lt;"
+                                        value="&gt;mvn:org.apache.camel/camel-cxf/2.17.6.tesb1&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
