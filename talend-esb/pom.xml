@@ -811,6 +811,15 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.config.core-${karaf.version}.tesb1.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for org.apache.karaf.jaas.modules (TESB-26507) -->
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.jaas</groupId>
+                                    <artifactId>org.apache.karaf.jaas.modules</artifactId>
+                                    <version>${karaf.version}.tesb1</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>org.apache.karaf.jaas.modules-${karaf.version}.tesb1.jar</destFileName>
+                                </artifactItem>
                                 <!-- patch for decanter bundles (TESB-24788) -->
                                 <artifactItem>
                                     <groupId>org.apache.karaf.decanter</groupId>
@@ -1454,6 +1463,10 @@
                                     <replacefilter
                                         token="mvn:org.apache.karaf.config/org.apache.karaf.config.core/${karaf.version}&lt;"
                                         value="mvn:org.apache.karaf.config/org.apache.karaf.config.core/${karaf.version}.tesb1&lt;"/>
+                                    <!-- patch for org.apache.karaf.jaas.modules (TESB-26507) -->
+                                    <replacefilter
+                                        token="mvn:org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}&lt;"
+                                        value="mvn:org.apache.karaf.jaas/org.apache.karaf.jaas.modules/${karaf.version}.tesb1&lt;"/>
                                     <!-- upgrade Jetty version to 9.4.18.v20190429 (TESB-25945) -->
                                     <replacefilter
                                         token="9.4.12.v20180830"

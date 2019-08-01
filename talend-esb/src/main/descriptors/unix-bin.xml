@@ -223,6 +223,8 @@
                 <exclude>system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <!-- patch for org.apache.karaf.config.core (TESB-25795) -->
                 <exclude>system/org/apache/karaf/config/org.apache.karaf.config.core/${karaf.version}/**</exclude>
+                <!-- patch for org.apache.karaf.jaas.modules (TESB-26507) -->
+                <exclude>system/org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}/**</exclude>
                 <exclude>README.md</exclude>
                 <exclude>RELEASE-NOTES.md</exclude>
                 <exclude>BUILDING.md</exclude>
@@ -626,6 +628,12 @@
         <file>
             <source>${basedir}/target/dependencies/org.apache.karaf.config.core-${karaf.version}.tesb1.jar</source>
             <outputDirectory>/container/system/org/apache/karaf/config/org.apache.karaf.config.core/${karaf.version}.tesb1/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <!-- patch for org.apache.karaf.jaas.modules (TESB-26507) -->
+        <file>
+            <source>${basedir}/target/dependencies/org.apache.karaf.jaas.modules-${karaf.version}.tesb1.jar</source>
+            <outputDirectory>/container/system/org/apache/karaf/jaas/org.apache.karaf.jaas.modules/${karaf.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <!-- patch for decanter bundles (TESB-24788) -->
