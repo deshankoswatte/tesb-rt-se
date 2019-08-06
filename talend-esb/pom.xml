@@ -760,6 +760,16 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>activemq-karaf-${activemq.version}-features-core.xml</destFileName>
                                 </artifactItem>
+                                <!-- patch the activemq-webconsole cfg (TESB-26606) -->
+                                <artifactItem>
+                                    <groupId>org.apache.activemq</groupId>
+                                    <artifactId>activemq-karaf</artifactId>
+                                    <version>${activemq.version}</version>
+                                    <type>cfg</type>
+                                    <classifier>activemq-webconsole</classifier>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                    <destFileName>activemq-karaf-${activemq.version}-activemq-webconsole.cfg</destFileName>
+                                </artifactItem>
                                 <artifactItem>
                                     <groupId>org.apache.cxf</groupId>
                                     <artifactId>cxf-core</artifactId>
@@ -1546,6 +1556,21 @@
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.8"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
+                                </replace>
+                                <!-- patch the activemq-webconsole cfg (TESB-26606) -->
+                                <replace file="target/dependencies/activemq-karaf-${activemq.version}-activemq-webconsole.cfg">
+                                    <replacefilter
+                                        token="webconsole.jmx.user=karaf"
+                                        value="webconsole.jmx.user="/>
+                                    <replacefilter
+                                        token="webconsole.jmx.password=karaf"
+                                        value="webconsole.jmx.password="/>
+                                    <replacefilter
+                                        token="webconsole.jms.user=karaf"
+                                        value="webconsole.jms.user="/>
+                                    <replacefilter
+                                        token="webconsole.jms.password=karaf"
+                                        value="webconsole.jms.password="/>
                                 </replace>
                                 <!-- patch for decanter bundles (TESB-24788) -->
                                 <replace file="target/dependencies/apache-karaf-decanter-${decanter.version}-features.xml">
