@@ -393,6 +393,8 @@
                 <exclude>org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
                 <!-- Patch jackson-databind version (TESB-21628) -->
                 <exclude>org/apache/activemq/activemq-karaf/${activemq.version}/activemq-karaf-${activemq.version}-features-core.xml</exclude>
+                <!-- Patch activemq-webconsole cfg (TESB-26606) -->
+                <exclude>org/apache/activemq/activemq-karaf/${activemq.version}/activemq-karaf-${activemq.version}-activemq-webconsole.cfg</exclude>
                 <exclude>com/fasterxml/jackson/core/jackson-databind/2.4.4/**</exclude>
                 <exclude>com/fasterxml/jackson/core/jackson-databind/2.6.1/**</exclude>
                 <exclude>com/fasterxml/jackson/core/jackson-databind/2.6.7/**</exclude>
@@ -591,6 +593,13 @@
         </file>
         <file>
             <source>${basedir}/target/dependencies/activemq-karaf-${activemq.version}-features-core.xml</source>
+            <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+            <lineEnding>dos</lineEnding>
+        </file>
+        <!-- patch activemq-webconsole cfg (TESB-26606) -->
+        <file>
+            <source>${basedir}/target/dependencies/activemq-karaf-${activemq.version}-activemq-webconsole.cfg</source>
             <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
             <fileMode>0644</fileMode>
             <lineEnding>dos</lineEnding>
