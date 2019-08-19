@@ -1320,7 +1320,7 @@
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.7"
-                                        value="mvn:com.fasterxml.jackson.jaxrx/jackson-jaxrs-json-provider/${jackson.version}"/>
+                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.jr/jackson-jr-objects/2.9.7"
                                         value="mvn:com.fasterxml.jackson.jr/jackson-jr-objects/${jackson.version}"/>
@@ -1347,7 +1347,7 @@
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.jaxrx/jackson-jaxrs-json-provider/${jackson.version}"/>
+                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-paranamer/2.6.1"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-paranamer/${jackson.version}"/>
