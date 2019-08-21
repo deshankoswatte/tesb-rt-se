@@ -1091,15 +1091,15 @@
                                     <!-- patch for camel-dozer (TESB-23868) -->
                                     <replacefilter
                                         token="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}&lt;"
-                                        value="&gt;mvn:org.apache.camel/camel-dozer/${camel.version}.tesb1&lt;"/>
+                                        value="&gt;mvn:org.apache.camel/camel-dozer/${camel-dozer.tesb.version}&lt;"/>
                                     <!-- patch for camel-blueprint (TESB-24132) -->
                                     <replacefilter
                                         token="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}&lt;"
-                                        value="&gt;mvn:org.apache.camel/camel-blueprint/${camel.version}.tesb1&lt;"/>
+                                        value="&gt;mvn:org.apache.camel/camel-blueprint/${camel-blueprint.tesb.version}&lt;"/>
                                     <!-- patch for camel-core (TESB-25575) -->
                                     <replacefilter
                                             token="&gt;mvn:org.apache.camel/camel-core/${camel.version}&lt;"
-                                            value="&gt;mvn:org.apache.camel/camel-core/${camel.version}.tesb2&lt;"/>
+                                            value="&gt;mvn:org.apache.camel/camel-core/${camel-core.tesb.version}&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
