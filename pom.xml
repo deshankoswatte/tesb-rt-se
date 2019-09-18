@@ -90,6 +90,7 @@
     </developers>
 
     <properties>
+        <sam-agent.tesb.version>7.1.1.tesb1</sam-agent.tesb.version>
         <packages.version>${project.version}</packages.version>
         <cxf.version>3.2.6</cxf.version>
         <camel.version>2.21.2</camel.version>
