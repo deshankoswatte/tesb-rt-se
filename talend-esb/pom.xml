@@ -1569,7 +1569,7 @@
 							<appendAssemblyId>false</appendAssemblyId>
 							<tarLongFileMode>gnu</tarLongFileMode>
                             <finalName>TESB_SE-V${packages.version}</finalName>
-                            <formats>${assembly.formats}</formats>
+                            <formats><format>tar.gz</format><format>zip</format></formats>
 						</configuration>
 					</execution>
 				</executions>
