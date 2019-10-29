@@ -227,11 +227,11 @@
                             </descriptors>
                             <features>
                                 <!-- Core Features -->
-                                <feature>spring/4.3.22.RELEASE_2</feature>
-                                <feature>spring/5.0.12.RELEASE_1</feature>
-                                <feature>spring-jdbc/5.0.12.RELEASE_1</feature>
-                                <feature>spring-tx/5.0.12.RELEASE_1</feature>
-                                <feature>spring-jms/5.0.12.RELEASE_1</feature>
+                                <feature>spring-aspects/5.1.9.RELEASE_1</feature>
+                                <feature>spring-instrument/5.1.9.RELEASE_1</feature>
+                                <feature>spring-messaging/5.1.9.RELEASE_1</feature>
+								<feature>spring-websocket/5.1.9.RELEASE_1</feature>
+								<feature>spring-security/5.1.5.RELEASE_1</feature>
                                 <feature>jetty</feature>
                                 <feature>webconsole</feature>
                                 <feature>eventadmin</feature>
