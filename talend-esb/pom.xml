@@ -230,8 +230,8 @@
                                 <feature>spring-aspects/5.1.9.RELEASE_1</feature>
                                 <feature>spring-instrument/5.1.9.RELEASE_1</feature>
                                 <feature>spring-messaging/5.1.9.RELEASE_1</feature>
-								<feature>spring-websocket/5.1.9.RELEASE_1</feature>
-								<feature>spring-security/5.1.5.RELEASE_1</feature>
+                                <feature>spring-websocket/5.1.9.RELEASE_1</feature>
+                                <feature>spring-security/5.1.5.RELEASE_1</feature>
                                 <feature>jetty</feature>
                                 <feature>webconsole</feature>
                                 <feature>eventadmin</feature>
