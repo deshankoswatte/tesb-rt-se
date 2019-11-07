@@ -95,8 +95,8 @@
         <cxf.version>3.3.1</cxf.version>
         <camel.version>2.23.1</camel.version>
         <activemq.version>5.15.9</activemq.version>
-        <spring.version>5.1.5.RELEASE</spring.version>
-        <karaf.version>4.2.4</karaf.version>
+        <spring.version>5.1.9.RELEASE</spring.version>
+        <karaf.version>4.2.7</karaf.version>
         <decanter.version>2.2.0</decanter.version>
         <zookeeper.version>3.4.13</zookeeper.version>
         <derby.version>10.14.2.0</derby.version>
@@ -118,7 +118,7 @@
         <osgi.core.version>6.0.0</osgi.core.version>
         <osgi.compendium.version>5.0.0</osgi.compendium.version>
         <jetty.version>9.4.18.v20190429</jetty.version>
-        <pax-web-jsp.version>7.2.10</pax-web-jsp.version>
+        <pax-web-jsp.version>7.2.11</pax-web-jsp.version>
         <oscache.bundle.version>2.4_5</oscache.bundle.version>
         <cglib.bundle.version>3.2.4_1</cglib.bundle.version>
         <ibatis-sqlmap.bundle.version>2.3.4.726_4</ibatis-sqlmap.bundle.version>
@@ -136,7 +136,7 @@
         <wss4j.version>2.2.2</wss4j.version>
         <xerces.version>2.12.0_1</xerces.version>
         <log4j.version>1.2.17</log4j.version>
-        <pax-web.version>7.2.10</pax-web.version>
+        <pax-web.version>7.2.11</pax-web.version>
         <pax-logging.version>1.10.1</pax-logging.version>
         <javax-annotation.version>1.3.1</javax-annotation.version>
         <blueprint.core.version>1.8.3</blueprint.core.version>
