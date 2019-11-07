@@ -207,8 +207,6 @@
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>system/org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
-                <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                <exclude>system/org/apache/karaf/features/org.apache.karaf.features.core/${karaf.version}/**</exclude>
                 <!-- Patch jackson version (TESB-24693) -->
                 <exclude>system/org/apache/karaf/features/enterprise/${karaf.version}/enterprise-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/features/spring/${karaf.version}/spring-${karaf.version}-features.xml</exclude>
@@ -402,8 +400,6 @@
                 <exclude>org/apache/cxf/cxf-rt-transports-http/**</exclude>
                 <!-- patch for camel-core (TESB-25690) -->
                 <exclude>org/apache/camel/camel-core/**</exclude>
-                <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                <exclude>org/apache/karaf/features/org.apache.karaf.features.core/${karaf.version}/**</exclude>
                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                 <exclude>org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <!-- patch for decanter bundles (TESB-24788) -->
@@ -604,12 +600,6 @@
         <file>
             <source>${basedir}/target/dependencies/camel-core-${camel.version}.tesb1.jar</source>
             <outputDirectory>./container/system/org/apache/camel/camel-core/${camel.version}.tesb1/</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-        <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-        <file>
-            <source>${basedir}/target/dependencies/org.apache.karaf.features.core-${karaf.version}-TESB.jar</source>
-            <outputDirectory>./container/system/org/apache/karaf/features/org.apache.karaf.features.core/${karaf.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
