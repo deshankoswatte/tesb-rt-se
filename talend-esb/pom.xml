@@ -227,11 +227,11 @@
                             </descriptors>
                             <features>
                                 <!-- Core Features -->
-                                <feature>spring/4.3.22.RELEASE_2</feature>
-                                <feature>spring/5.0.12.RELEASE_1</feature>
-                                <feature>spring-jdbc/5.0.12.RELEASE_1</feature>
-                                <feature>spring-tx/5.0.12.RELEASE_1</feature>
-                                <feature>spring-jms/5.0.12.RELEASE_1</feature>
+                                <feature>spring-aspects/5.1.9.RELEASE_1</feature>
+                                <feature>spring-instrument/5.1.9.RELEASE_1</feature>
+                                <feature>spring-messaging/5.1.9.RELEASE_1</feature>
+                                <feature>spring-websocket/5.1.9.RELEASE_1</feature>
+                                <feature>spring-security/5.1.5.RELEASE_1</feature>
                                 <feature>jetty</feature>
                                 <feature>webconsole</feature>
                                 <feature>eventadmin</feature>
@@ -686,24 +686,6 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>standard-${karaf.version}-features.xml</destFileName>
                                 </artifactItem>
-                                <!-- patch for pax-logging-log4j2 (TESB-20573) -->
-                                <artifactItem>
-                                    <groupId>org.apache.karaf.features</groupId>
-                                    <artifactId>framework</artifactId>
-                                    <version>${karaf.version}</version>
-                                    <classifier>features</classifier>
-                                    <type>xml</type>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>framework-${karaf.version}-features.xml</destFileName>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.ops4j.pax.logging</groupId>
-                                    <artifactId>pax-logging-log4j2</artifactId>
-                                    <version>${pax-logging.version}</version>
-                                    <classifier>TESB</classifier>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>pax-logging-log4j2-${pax-logging.version}-TESB.jar</destFileName>
-                                </artifactItem>
                                 <artifactItem>
                                     <groupId>org.apache.activemq</groupId>
                                     <artifactId>activemq-karaf</artifactId>
@@ -773,16 +755,6 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>camel-core-${camel.version}.tesb1.jar</destFileName>
                                 </artifactItem>
-                                <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                                <artifactItem>
-                                    <groupId>org.apache.karaf.features</groupId>
-                                    <artifactId>org.apache.karaf.features.core</artifactId>
-                                    <version>${karaf.version}</version>
-                                    <classifier>TESB</classifier>
-                                    <type>jar</type>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>org.apache.karaf.features.core-${karaf.version}-TESB.jar</destFileName>
-                                </artifactItem>
                                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                                 <artifactItem>
                                     <groupId>org.apache.aries.blueprint</groupId>
@@ -791,15 +763,6 @@
                                     <classifier>TESB</classifier>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.aries.blueprint.core-${blueprint.core.version}-TESB.jar</destFileName>
-                                </artifactItem>
-                                <!-- patch for org.apache.karaf.config.core (TESB-25795) -->
-                                <artifactItem>
-                                    <groupId>org.apache.karaf.config</groupId>
-                                    <artifactId>org.apache.karaf.config.core</artifactId>
-                                    <version>${karaf.version}.tesb1</version>
-                                    <type>jar</type>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>org.apache.karaf.config.core-${karaf.version}.tesb1.jar</destFileName>
                                 </artifactItem>
                                 <!-- patch for decanter bundles (TESB-24788) -->
                                 <artifactItem>
@@ -1415,29 +1378,11 @@
                                         token="mvn:org.apache.cxf/cxf-rt-transports-http-jetty/3.3.1&lt;"
                                         value="mvn:org.apache.cxf/cxf-rt-transports-http-jetty/3.3.1.tesb1&lt;"/>
                                 </replace>
-                                <replace file="target/dependencies/framework-${karaf.version}-features.xml">
-                                    <!-- patch for pax-logging-log4j2 (TESB-20573) -->
-                                    <replacefilter
-                                        token="org.ops4j.pax.logging/pax-logging-log4j2/${pax-logging.version}&lt;"
-                                        value="org.ops4j.pax.logging/pax-logging-log4j2/${pax-logging.version}/jar/TESB&lt;"/>
-                                    <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                                    <replacefilter
-                                        token="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}&lt;"
-                                        value="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}/jar/TESB&lt;"/>
-                                </replace>
                                 <replace file="target/dependencies/standard-${karaf.version}-features.xml">
-                                    <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                                    <replacefilter
-                                        token="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}&lt;"
-                                        value="org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version}/jar/TESB&lt;"/>
                                     <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                                     <replacefilter
                                         token="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}&lt;"
                                         value="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/jar/TESB&lt;"/>
-                                    <!-- patch for org.apache.karaf.config.core (TESB-25795) -->
-                                    <replacefilter
-                                        token="mvn:org.apache.karaf.config/org.apache.karaf.config.core/${karaf.version}&lt;"
-                                        value="mvn:org.apache.karaf.config/org.apache.karaf.config.core/${karaf.version}.tesb1&lt;"/>
                                     <!-- upgrade Jetty version to 9.4.18.v20190429 (TESB-25945) -->
                                     <replacefilter
                                         token="9.4.12.v20180830"
@@ -1450,23 +1395,6 @@
                                         <replacevalue>feature name="pax-http-service" description="Pax-Web OSGi HTTP Service" version="${pax-web.version}"</replacevalue>
                                     </replacefilter>
                                  </replace>
-                                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
-                                 <replaceregexp byline="true"
-                                        match="^(\s*mvn\\:org\.ops4j\.pax\.logging/pax-logging-log4j2/${pax-logging.version})(\s*=.*)$"
-                                        replace="\1/jar/TESB\2${line.separator}mvn\\\\:javax\.annotation/javax\.annotation-api/${javax-annotation.version} = 10">
-                                    <fileset dir="target/dependencies/apache-karaf/apache-karaf-${karaf.version}/etc/">
-                                        <include name="startup.properties"/>
-                                    </fileset>
-                                 </replaceregexp>
-                                 <!-- patch for Karaf org.apache.karaf.features.core bundle (TESB-25565) -->
-                                 <replaceregexp byline="true"
-                                           match="^(\s*mvn\\:org.apache.karaf.features/org.apache.karaf.features.core/${karaf.version})(\s*=.*)$"
-                                           replace="\1/jar/TESB\2">
-                                    <fileset dir="target/dependencies/apache-karaf/apache-karaf-${karaf.version}/etc/">
-                                        <include name="startup.properties"/>
-                                    </fileset>
-                                 </replaceregexp>
-
                                 <replace file="target/dependencies/enterprise-${karaf.version}-features.xml">
                                     <!-- patch the jackson version (TESB-26035) -->
                                     <replacefilter
