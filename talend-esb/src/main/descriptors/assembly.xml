@@ -202,14 +202,10 @@
                 <!-- TESB-24618 upgrade cxf to 3.3.1 -->
                 <exclude>etc/jre.properties</exclude>
                 <exclude>lib/endorsed/**</exclude>
-                <!-- patch karaf standard features (TESB-25945) -->
-                <exclude>system/org/apache/karaf/features/standard/${karaf.version}/standard-${karaf.version}-features.xml</exclude>
                 <!-- Patch jackson version (TESB-24693) -->
                 <exclude>system/org/apache/karaf/features/enterprise/${karaf.version}/enterprise-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/features/spring/${karaf.version}/spring-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
-                <!-- Patch jetty version (TESB-25945) -->
-                <exclude>system/org/ops4j/pax/web/pax-web-features/7.2.8/**</exclude>
                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                 <exclude>system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <exclude>README.md</exclude>
@@ -367,8 +363,6 @@
                 <!-- patch for xalan and xerces version -->
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xalan/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xerces/**</exclude>
-                <!-- patch karaf standard features (TESB-25945) -->
-                <exclude>org/apache/karaf/features/standard/${karaf.version}/standard-${karaf.version}-features.xml</exclude>
                 <!-- patch for activemq-camel (TESB-24591) -->
                 <exclude>org/apache/activemq/activemq-karaf/${activemq.version}/activemq-karaf-${activemq.version}-features.xml</exclude>
                 <!-- Patch jackson version (TESB-24693) -->
@@ -383,10 +377,6 @@
                 <exclude>com/fasterxml/jackson/core/jackson-databind/2.9.8/**</exclude>
                 <exclude>com/fasterxml/jackson/*/*/2.9.*/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
-                <!-- Patch jetty version (TESB-25945) -->
-                <exclude>org/eclipse/jetty/jetty-*/9.4.12.v20180830/**</exclude>
-                <exclude>org/eclipse/jetty/websocket/*/9.4.12.v20180830/**</exclude>
-                <exclude>org/ops4j/pax/web/pax-web-features/7.2.8/**</exclude>
                 <!-- patch for cxf-core, cxf-rt-transports-http (TESB-23159, TESB-23464) -->
                 <exclude>org/apache/cxf/cxf-core/**</exclude>
                 <exclude>org/apache/cxf/cxf-rt-transports-http/**</exclude>
@@ -525,13 +515,6 @@
             <source>${basedir}/target/dependencies/org.apache.karaf.jaas.boot-${karaf.version}.jar</source>
             <outputDirectory>./container/system/org/apache/karaf/jaas/org.apache.karaf.jaas.boot/${karaf.version}/</outputDirectory>
             <fileMode>0644</fileMode>
-        </file>
-        <!-- patch karaf standard features (TESB-25945) -->
-        <file>
-            <source>${basedir}/target/dependencies/standard-${karaf.version}-features.xml</source>
-            <outputDirectory>./container/system/org/apache/karaf/features/standard/${karaf.version}/</outputDirectory>
-            <fileMode>0644</fileMode>
-            <lineEnding>unix</lineEnding>
         </file>
         <!-- patch for activemq-camel (TESB-24591) -->
         <file>
