@@ -217,7 +217,7 @@
                                 <descriptor>mvn:org.apache.karaf.features/enterprise-legacy/${karaf.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.jclouds.karaf/jclouds-karaf/${jclouds.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.karaf.decanter/apache-karaf-decanter/${decanter.version}/xml/features</descriptor>
-                                <descriptor>mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features</descriptor>
+<!--                                <descriptor>mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features</descriptor> --> 
 <!--                                 <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor> -->
 <!--                                 <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</descriptor> -->
 <!--                                 <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor> -->
@@ -242,11 +242,6 @@
                                 <feature>jndi</feature>
                                 <feature>jms</feature>
                                 <feature>aries-blueprint-spring</feature>
-                                <!-- pax-web version patch (TESB-25945) -->
-                                <feature>pax-web-core/${pax-web.version}</feature>
-                                <feature>pax-jetty/${jetty.version}</feature>
-                                <feature>pax-jetty-http2/${pax-web.version}</feature>
-                                <feature>pax-war/${pax-web.version}</feature>
                                 <!-- ActiveMQ Features -->
                                 <feature>activemq</feature>
                                 <feature>activemq-blueprint</feature>
@@ -676,7 +671,6 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.boot-${karaf.version}.jar</destFileName>
                                 </artifactItem>
-                                <!-- patch the jetty version (TESB-25945) -->
                                 <artifactItem>
                                     <groupId>org.apache.karaf.features</groupId>
                                     <artifactId>standard</artifactId>
@@ -1282,10 +1276,6 @@
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/2.6.1"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${jackson.version}"/> -->
-                                    <!-- patch the jetty version (TESB-25945) -->
-                                    <replacefilter
-                                        token="/9.4.12.v20180830&lt;"
-                                        value="/${jetty.version}&lt;"/>
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
@@ -1383,18 +1373,7 @@
                                     <replacefilter
                                         token="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}&lt;"
                                         value="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/jar/TESB&lt;"/>
-                                    <!-- upgrade Jetty version to 9.4.18.v20190429 (TESB-25945) -->
-                                    <replacefilter
-                                        token="9.4.12.v20180830"
-                                        value="${jetty.version}"/>
-                                    <replacefilter
-                                        token="mvn:org.ops4j.pax.web/pax-web-features/7.2.8/xml/features"
-                                        value="mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features"/>
-                                    <replacefilter>
-                                        <replacetoken>feature name="pax-http-service" description="Pax-Web OSGi HTTP Service" version="7.2.8"</replacetoken>
-                                        <replacevalue>feature name="pax-http-service" description="Pax-Web OSGi HTTP Service" version="${pax-web.version}"</replacevalue>
-                                    </replacefilter>
-                                 </replace>
+                                </replace>
                                 <replace file="target/dependencies/enterprise-${karaf.version}-features.xml">
                                     <!-- patch the jackson version (TESB-26035) -->
                                     <replacefilter
@@ -1418,12 +1397,6 @@
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.6"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
-                                </replace>
-                                <replace file="target/dependencies/spring-legacy-${karaf.version}-features.xml">
-                                    <!-- patch dependencies for jetty  version (TESB-25945) -->
-                                    <replacefilter
-                                        token="mvn:org.ops4j.pax.web/pax-web-features/7.2.8/xml/features"
-                                        value="mvn:org.ops4j.pax.web/pax-web-features/${pax-web.version}/xml/features"/>
                                 </replace>
                                 <replace file="target/dependencies/activemq-karaf-${activemq.version}-features-core.xml">
                                 <!-- patch for the xstream version (TESB-26996) -->
