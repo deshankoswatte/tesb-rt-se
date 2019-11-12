@@ -671,6 +671,7 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.boot-${karaf.version}.jar</destFileName>
                                 </artifactItem>
+                                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                                 <artifactItem>
                                     <groupId>org.apache.karaf.features</groupId>
                                     <artifactId>standard</artifactId>
