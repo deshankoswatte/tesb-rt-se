@@ -496,7 +496,6 @@
                                 <feature>camel-weather</feature>
                                 <feature>camel-websocket</feature>
                                 <feature>camel-xmlbeans</feature>
-                                <feature>camel-xmljson</feature>
                                 <feature>camel-xmlrpc</feature>
                                 <feature>camel-xmlsecurity</feature>
                                 <feature>camel-xmpp</feature>
