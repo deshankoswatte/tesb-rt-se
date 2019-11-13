@@ -741,14 +741,13 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>cxf-rt-transports-http-${cxf.version}.jar</destFileName>
                                 </artifactItem>
-                                <!-- patch for camel-core (TESB-25690) -->
                                 <artifactItem>
                                     <groupId>org.apache.camel</groupId>
                                     <artifactId>camel-core</artifactId>
-                                    <version>${camel.version}.tesb1</version>
+                                    <version>${camel.version}</version>
                                     <type>jar</type>
                                     <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>camel-core-${camel.version}.tesb1.jar</destFileName>
+                                    <destFileName>camel-core-${camel.version}.jar</destFileName>
                                 </artifactItem>
                                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                                 <artifactItem>
@@ -1163,10 +1162,6 @@
                         <configuration>
                             <target>
                                 <replace file="target/dependencies/apache-camel-${camel.version}-features.xml">
-                                    <replacefilter>
-                                        <replacetoken>mvn:org.apache.camel/camel-core/${camel.version}&lt;</replacetoken>
-                                        <replacevalue>mvn:org.apache.camel/camel-core/${camel.version}.tesb1&lt;</replacevalue>
-                                    </replacefilter>
                                     <replacefilter
                                         token="apache-cxf/3.2.7/xml/features"
                                         value="apache-cxf/${cxf.version}/xml/features"/>
