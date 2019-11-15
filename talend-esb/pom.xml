@@ -496,7 +496,6 @@
                                 <feature>camel-weather</feature>
                                 <feature>camel-websocket</feature>
                                 <feature>camel-xmlbeans</feature>
-                                <feature>camel-xmljson</feature>
                                 <feature>camel-xmlrpc</feature>
                                 <feature>camel-xmlsecurity</feature>
                                 <feature>camel-xmpp</feature>
@@ -740,15 +739,6 @@
                                     <version>${cxf.version}</version>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>cxf-rt-transports-http-${cxf.version}.jar</destFileName>
-                                </artifactItem>
-                                <!-- patch for camel-core (TESB-25690) -->
-                                <artifactItem>
-                                    <groupId>org.apache.camel</groupId>
-                                    <artifactId>camel-core</artifactId>
-                                    <version>${camel.version}.tesb1</version>
-                                    <type>jar</type>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>camel-core-${camel.version}.tesb1.jar</destFileName>
                                 </artifactItem>
                                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                                 <artifactItem>
@@ -1156,10 +1146,6 @@
                         <configuration>
                             <target>
                                 <replace file="target/dependencies/apache-camel-${camel.version}-features.xml">
-                                    <replacefilter>
-                                        <replacetoken>mvn:org.apache.camel/camel-core/${camel.version}&lt;</replacetoken>
-                                        <replacevalue>mvn:org.apache.camel/camel-core/${camel.version}.tesb1&lt;</replacevalue>
-                                    </replacefilter>
                                     <replacefilter
                                         token="apache-cxf/3.2.7/xml/features"
                                         value="apache-cxf/${cxf.version}/xml/features"/>
@@ -1180,10 +1166,6 @@
                                         <replacetoken>mvn:org.apache.abdera/abdera-parser/1.1.3</replacetoken>
                                         <replacevalue>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.abdera-parser/1.1.3_2</replacevalue>
                                     </replacefilter>
-                                    <!-- patch CAMEL-13241 -->
-                                    <replacefilter
-                                        token="${backport-util-concurrent-version}"
-                                        value="3.1"/>
                                     <!-- Patch the TESB-25669 -->
                                     <replacefilter>
                                         <replacetoken>&lt;bundle dependency='true'&gt;mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/2.9.0&lt;/bundle&gt;</replacetoken>

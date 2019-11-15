@@ -380,8 +380,6 @@
                 <!-- patch for cxf-core, cxf-rt-transports-http (TESB-23159, TESB-23464) -->
                 <exclude>org/apache/cxf/cxf-core/**</exclude>
                 <exclude>org/apache/cxf/cxf-rt-transports-http/**</exclude>
-                <!-- patch for camel-core (TESB-25690) -->
-                <exclude>org/apache/camel/camel-core/**</exclude>
                 <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
                 <exclude>org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <!-- patch for decanter bundles (TESB-24788) -->
@@ -555,12 +553,6 @@
         <file>
             <source>${basedir}/target/dependencies/cxf-rt-transports-http-${cxf.version}.jar</source>
             <outputDirectory>./container/system/org/apache/cxf/cxf-rt-transports-http/${cxf.version}/</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-        <!-- patch for camel-core (TESB-25690) -->
-        <file>
-            <source>${basedir}/target/dependencies/camel-core-${camel.version}.tesb1.jar</source>
-            <outputDirectory>./container/system/org/apache/camel/camel-core/${camel.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
