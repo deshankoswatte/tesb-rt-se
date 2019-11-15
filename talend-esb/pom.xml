@@ -1389,10 +1389,6 @@
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                 </replace>
                                 <replace file="target/dependencies/activemq-karaf-${activemq.version}-features-core.xml">
-                                <!-- patch for the xstream version (TESB-26996) -->
-                                    <replacefilter
-                                        token="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream/1.4.8_1&lt;"
-                                        value="&gt;mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.xstream-java8/1.4.10_1&lt;"/>
                                     <!-- patch the jackson version (TESB-26035) -->
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.8"
