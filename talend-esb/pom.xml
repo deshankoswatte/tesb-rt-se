@@ -51,121 +51,6 @@
             <version>${pax-url-classpath.version}</version>
             <type>jar</type>
         </dependency>
-        <!-- workaround for Jackson version (TESB-26035) -->
-        <!-- <dependency>
-             <groupId>com.fasterxml.jackson.core</groupId>
-             <artifactId>jackson-core</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.core</groupId>
-             <artifactId>jackson-databind</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.core</groupId>
-             <artifactId>jackson-annotations</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.dataformat</groupId>
-             <artifactId>jackson-dataformat-cbor</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.dataformat</groupId>
-             <artifactId>jackson-dataformat-csv</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.dataformat</groupId>
-             <artifactId>jackson-dataformat-smile</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.dataformat</groupId>
-             <artifactId>jackson-dataformat-xml</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.dataformat</groupId>
-             <artifactId>jackson-dataformat-yaml</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.datatype</groupId>
-             <artifactId>jackson-datatype-guava</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.datatype</groupId>
-             <artifactId>jackson-datatype-jdk8</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.datatype</groupId>
-             <artifactId>jackson-datatype-jsr310</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.jaxrs</groupId>
-             <artifactId>jackson-jaxrs-base</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.jaxrs</groupId>
-             <artifactId>jackson-jaxrs-json-provider</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.jr</groupId>
-             <artifactId>jackson-jr-objects</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.module</groupId>
-             <artifactId>jackson-module-afterburner</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.module</groupId>
-             <artifactId>jackson-module-jaxb-annotations</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.module</groupId>
-             <artifactId>jackson-module-jsonSchema</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.module</groupId>
-             <artifactId>jackson-module-paranamer</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency>
-        <dependency>
-             <groupId>com.fasterxml.jackson.module</groupId>
-             <artifactId>jackson-module-scala_2.11</artifactId>
-             <version>${jackson.version}</version>
-             <type>jar</type>
-        </dependency> -->
     </dependencies>
 
     <build>
@@ -789,7 +674,7 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.decanter.collector.jms-${decanter.version}.tesb1.cfg</destFileName>
                                 </artifactItem>
-                               <!-- workaround for Jackson version (TESB-26035) -->
+                               <!-- upgrade Jackson version (TESB-27154) -->
                                 <artifactItem>
                                      <groupId>com.fasterxml.jackson.core</groupId>
                                      <artifactId>jackson-core</artifactId>
@@ -1179,79 +1064,58 @@
                                         <replacetoken>mvn:org.codehaus.woodstox/woodstox-core-asl/4.3.0</replacetoken>
                                         <replacevalue>mvn:com.fasterxml.woodstox/woodstox-core/5.0.3</replacevalue>
                                     </replacefilter>
-                                    <!-- patch the jackson version (TESB-26035) -->
+                                    <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9.3"
                                         value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/2.9.9"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-cbor/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-csv/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-csv/2.9.9"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-csv/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-smile/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-smile/2.9.9"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-smile/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.9.9"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-xml/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.9.9"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-guava/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-guava/2.9.9"
                                         value="mvn:com.fasterxml.jackson.datatype/jackson-datatype-guava/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jdk8/2.9.9"
                                         value="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jdk8/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.9.9"
                                         value="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.9"
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.9"
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jr/jackson-jr-objects/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.jr/jackson-jr-objects/2.9.9"
                                         value="mvn:com.fasterxml.jackson.jr/jackson-jr-objects/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-afterburner/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.module/jackson-module-afterburner/2.9.9"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-afterburner/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.9"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/2.9.7"
+                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/2.9.9"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-jsonSchema/${jackson.version}"/>
-                                    <!-- <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-paranamer/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-paranamer/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/2.6.1"
-                                        value="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/${jackson.version}"/> -->
                                 </replace>
                                 <!-- Patch jetty version range in Camel features (TESB-18114/CAMEL-10433) -->
                                 <replaceregexp byline="false" flags="gim"
@@ -1317,27 +1181,27 @@
                                         <replacetoken>&lt;bundle start-level="25"&gt;mvn:org.jvnet.staxex/stax-ex/1.7.6&lt;/bundle&gt;</replacetoken>
                                         <replacevalue></replacevalue>
                                     </replacefilter>
-                                    <!-- patch the jackson version (TESB-26035) -->
+                                    <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.10"
                                         value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.10"
                                         value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.10"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.9.10"
                                         value="mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.10"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.10"
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.10"
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
                                 </replace>
                                 <replace file="target/dependencies/standard-${karaf.version}-features.xml">
@@ -1347,39 +1211,39 @@
                                         value="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <replace file="target/dependencies/enterprise-${karaf.version}-features.xml">
-                                    <!-- patch the jackson version (TESB-26035) -->
+                                    <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                 </replace>
                                 <replace file="target/dependencies/spring-${karaf.version}-features.xml">
-                                    <!-- patch the jackson version (TESB-26035) -->
+                                    <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.6"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                 </replace>
                                 <replace file="target/dependencies/activemq-karaf-${activemq.version}-features-core.xml">
-                                    <!-- patch the jackson version (TESB-26035) -->
+                                    <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-core/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-databind/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.8"
+                                        token="mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.9"
                                         value="mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}"/>
                                 </replace>
                                 <!-- patch for decanter bundles (TESB-24788) -->

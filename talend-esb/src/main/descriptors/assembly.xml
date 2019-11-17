@@ -588,7 +588,7 @@
             <outputDirectory>./container/system/org/apache/karaf/decanter/collector/org.apache.karaf.decanter.collector.jms/${decanter.version}.tesb1/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
-        <!-- workaround for Jackson version (TESB-26035) -->
+        <!-- patch for Jackson version (TESB-27154) -->
         <file>
             <source>${basedir}/target/dependencies/jackson-core-${jackson.version}.jar</source>
             <outputDirectory>./container/system/com/fasterxml/jackson/core/jackson-core/${jackson.version}/</outputDirectory>
