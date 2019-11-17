@@ -206,8 +206,6 @@
                 <exclude>system/org/apache/karaf/features/enterprise/${karaf.version}/enterprise-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/features/spring/${karaf.version}/spring-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
-                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-                <exclude>system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <exclude>README.md</exclude>
                 <exclude>RELEASE-NOTES.md</exclude>
                 <exclude>BUILDING.md</exclude>
@@ -380,8 +378,6 @@
                 <!-- patch for cxf-core, cxf-rt-transports-http (TESB-23159, TESB-23464) -->
                 <exclude>org/apache/cxf/cxf-core/**</exclude>
                 <exclude>org/apache/cxf/cxf-rt-transports-http/**</exclude>
-                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-                <exclude>org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/**</exclude>
                 <!-- patch for decanter bundles (TESB-24788) -->
                 <exclude>org/apache/karaf/decanter/apache-karaf-decanter/${decanter.version}/apache-karaf-decanter-${decanter.version}-features.xml</exclude>
                 <exclude>org/apache/karaf/decanter/appender/org.apache.karaf.decanter.appender.jms/${decanter.version}/**</exclude>
@@ -553,12 +549,6 @@
         <file>
             <source>${basedir}/target/dependencies/cxf-rt-transports-http-${cxf.version}.jar</source>
             <outputDirectory>./container/system/org/apache/cxf/cxf-rt-transports-http/${cxf.version}/</outputDirectory>
-            <fileMode>0644</fileMode>
-        </file>
-        <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-        <file>
-            <source>${basedir}/target/dependencies/org.apache.aries.blueprint.core-${blueprint.core.version}-TESB.jar</source>
-            <outputDirectory>./container/system/org/apache/aries/blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/</outputDirectory>
             <fileMode>0644</fileMode>
         </file>
         <!-- patch for decanter bundles (TESB-24788) -->

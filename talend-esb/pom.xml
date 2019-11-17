@@ -555,16 +555,6 @@
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>org.apache.karaf.jaas.boot-${karaf.version}.jar</destFileName>
                                 </artifactItem>
-                                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-                                <artifactItem>
-                                    <groupId>org.apache.karaf.features</groupId>
-                                    <artifactId>standard</artifactId>
-                                    <version>${karaf.version}</version>
-                                    <classifier>features</classifier>
-                                    <type>xml</type>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>standard-${karaf.version}-features.xml</destFileName>
-                                </artifactItem>
                                 <artifactItem>
                                     <groupId>org.apache.activemq</groupId>
                                     <artifactId>activemq-karaf</artifactId>
@@ -624,15 +614,6 @@
                                     <version>${cxf.version}</version>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                     <destFileName>cxf-rt-transports-http-${cxf.version}.jar</destFileName>
-                                </artifactItem>
-                                <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-                                <artifactItem>
-                                    <groupId>org.apache.aries.blueprint</groupId>
-                                    <artifactId>org.apache.aries.blueprint.core</artifactId>
-                                    <version>${blueprint.core.version}</version>
-                                    <classifier>TESB</classifier>
-                                    <outputDirectory>target/dependencies</outputDirectory>
-                                    <destFileName>org.apache.aries.blueprint.core-${blueprint.core.version}-TESB.jar</destFileName>
                                 </artifactItem>
                                 <!-- patch for decanter bundles (TESB-24788) -->
                                 <artifactItem>
@@ -1203,12 +1184,6 @@
                                     <replacefilter
                                         token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.10"
                                         value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
-                                </replace>
-                                <replace file="target/dependencies/standard-${karaf.version}-features.xml">
-                                    <!-- patch for org.apache.aries.blueprint.core (TESB-25393) -->
-                                    <replacefilter
-                                        token="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}&lt;"
-                                        value="mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.core/${blueprint.core.version}/jar/TESB&lt;"/>
                                 </replace>
                                 <replace file="target/dependencies/enterprise-${karaf.version}-features.xml">
                                     <!-- patch the jackson version (TESB-27154) -->
