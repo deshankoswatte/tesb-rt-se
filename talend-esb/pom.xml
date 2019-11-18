@@ -1013,7 +1013,7 @@
                             <target>
                                 <replace file="target/dependencies/apache-camel-${camel.version}-features.xml">
                                     <replacefilter
-                                        token="apache-cxf/3.2.7/xml/features"
+                                        token="apache-cxf/3.2.10/xml/features"
                                         value="apache-cxf/${cxf.version}/xml/features"/>
                                     <replacefilter
                                         token="pax-cdi-features/1.0.0.RC1/xml/features"
