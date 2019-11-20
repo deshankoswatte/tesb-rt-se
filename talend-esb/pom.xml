@@ -1179,12 +1179,20 @@
                                         token="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.10"
                                         value="mvn:com.fasterxml.jackson.module/jackson-module-jaxb-annotations/${jackson.version}"/>
                                     <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.10"
-                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}"/>
-                                    <replacefilter
-                                        token="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.10"
-                                        value="mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}"/>
+                                        token="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/2.9.10"
+                                        value="mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}"/>
                                 </replace>
+                                <!-- patch the cxf-jackson feature (TESB-27214/CXF-8155) -->
+                                <replaceregexp byline="false" flags="gim"
+                                        file="target/dependencies/apache-cxf-${cxf.version}-features.xml"
+                                        match="^(\s*&lt;bundle&gt;wrap:mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base.*\s*)\s*(\s*&lt;/bundle&gt;)$"
+                                        replace="&lt;bundle start-level=&quot;35&quot;&gt;mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}&lt;/bundle&gt;">
+                                </replaceregexp>
+                                <replaceregexp byline="false" flags="gim"
+                                        file="target/dependencies/apache-cxf-${cxf.version}-features.xml"
+                                        match="^(\s*&lt;bundle&gt;wrap:mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider.*\s*)\s*(\s*&lt;/bundle&gt;)$"
+                                        replace="&lt;bundle start-level=&quot;35&quot;&gt;mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}&lt;/bundle&gt;">
+                                </replaceregexp>
                                 <replace file="target/dependencies/enterprise-${karaf.version}-features.xml">
                                     <!-- patch the jackson version (TESB-27154) -->
                                     <replacefilter
