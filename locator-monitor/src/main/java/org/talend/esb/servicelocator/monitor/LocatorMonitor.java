@@ -71,6 +71,8 @@ public class LocatorMonitor {
     private static final Marker SERVICE_INFO = MarkerFactory.getMarker("SERVICE_INFO");
     private static final Marker ENDPOINTS = MarkerFactory.getMarker("ENDPOINTS");
     private static final Marker ENDPOINT_INFO = MarkerFactory.getMarker("ENDPOINT_INFO");
+    
+    private static final String SLF4J_MARKER = "slf4j.marker"; 
 
     /**
      * Number in seconds to request SL for active/inactive services. Default is 10 seconds.
@@ -155,9 +157,11 @@ public class LocatorMonitor {
                                 if (alive) {
                                     activeEndpoints++;
                                     totalActiveEndpoints++;
+                                    MDC.put(SLF4J_MARKER, ENDPOINT_INFO);
                                     LOG.info(ENDPOINT_INFO, "Endpoint for Service {} with Address {} is alive since {}", service, address,
                                              formatTimeStamp(lastTimeStarted));
                                 } else {
+                                    MDC.put(SLF4J_MARKER, ENDPOINT_INFO);
                                     LOG.warn(ENDPOINT_INFO, "Endpoint for Service {} with Address {} is down since {}", service, address,
                                              formatTimeStamp(lastTimeStopped));
                                     totalOfflineEndpoints++;
