@@ -1,4 +1,4 @@
-<%@ page import="javax.servlet.http.HttpServletRequest,org.apache.cxf.rs.security.oauth2.common.OAuthAuthorizationData,org.apache.cxf.rs.security.oauth2.common.Permission" %>
+<%@ page import="javax.servlet.http.HttpServletRequest,org.apache.cxf.rs.security.oauth2.common.OAuthAuthorizationData,org.apache.cxf.rs.security.oauth2.common.OAuthPermission" %>
 
 <%
     OAuthAuthorizationData data = (OAuthAuthorizationData)request.getAttribute("data");
