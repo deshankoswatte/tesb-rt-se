@@ -166,7 +166,7 @@ public class LocatorMonitor {
                                     totalOfflineEndpoints++;
                                 }
                                 cleanMDC(mdcPropertyKeys);
-                                cleanMDC(ACTIVE, ADDRESS, PROTOCOL, TRANSPORT, LAST_TIME_STARTED, LAST_TIME_STOPPED);
+                                cleanMDC(ACTIVE, ADDRESS, PROTOCOL, TRANSPORT, LAST_TIME_STARTED, LAST_TIME_STOPPED, SLFJ_MARKER);
                             }
                             MDC.put(SLFJ_MARKER, SERVICE_INFO);
                             MDC.remove(ACTIVE);
