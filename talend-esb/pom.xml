@@ -831,6 +831,14 @@
                                     <type>jar</type>
                                     <outputDirectory>target/dependencies</outputDirectory>
                                 </artifactItem>
+                                <!-- patch the pax-logging-log4j2 for TESB-28177 -->
+                                <artifactItem>
+                                    <groupId>org.ops4j.pax.logging</groupId>
+                                    <artifactId>pax-logging-log4j2</artifactId>
+                                    <version>${org.ops4j.pax.logging.log4j2.tesb.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies</outputDirectory>
+                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
@@ -1053,6 +1061,11 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <target>
+                                <replace file="target/dependencies/framework-${karaf.version}-features.xml">
+                                    <replacefilter
+                                        token="mvn:org.ops4j.pax.logging/pax-logging-log4j2/1.11.2&lt;"
+                                        value="mvn:org.ops4j.pax.logging/pax-logging-log4j2/${org.ops4j.pax.logging.log4j2.tesb.version}&lt;"/>
+                                </replace>
                                 <replace file="target/dependencies/standard-${karaf.version}-features.xml">
                                     <replacefilter
                                         token="mvn:org.apache.karaf.config/org.apache.karaf.config.core/${karaf.version}&lt;"
