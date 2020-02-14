@@ -273,6 +273,9 @@
                 <exclude>bin/**</exclude>
                 <exclude>LICENSE</exclude>
                 <exclude>NOTICE</exclude>
+                <exclude>activemq-all-5.15.10.jar</exclude>
+                <exclude>lib/activemq-broker-5.15.10.jar</exclude>
+                <exclude>lib/activemq-client-5.15.10.jar</exclude>
             </excludes>
         </fileSet>
 
