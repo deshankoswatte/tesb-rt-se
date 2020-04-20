@@ -214,6 +214,9 @@
                 <!-- patch for pax-logging-log4j2 (TESB-20573) -->
                 <exclude>system/org/apache/karaf/features/framework/${karaf.version}/framework-${karaf.version}-features.xml</exclude>
                 <exclude>system/org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
+                <!-- Patch jetty version (TESB-28819) -->
+                <exclude>system/org/ops4j/pax/web/pax-web-features/6.0.7/**</exclude>
+                <exclude>system/org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
                 <exclude>README</exclude>
                 <exclude>RELEASE-NOTES</exclude>
                 <exclude>LICENSE</exclude>
@@ -393,6 +396,11 @@
                 <exclude>org/ops4j/pax/logging/pax-logging-log4j2/${pax-logging.version}/pax-logging-log4j2-${pax-logging.version}.jar</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.sparkjava-core/${sparkjava-core.version}/**</exclude>
                 <exclude>org/apache/servicemix/bundles/org.apache.servicemix.bundles.xstream/1.4.8_1/**</exclude>
+                <!-- Patch jetty version (TESB-28819) -->
+                <exclude>org/eclipse/jetty/jetty-*/9.3.14.v20161028/**</exclude>
+                <exclude>org/eclipse/jetty/websocket/*/9.3.14.v20161028/**</exclude>
+                <exclude>org/ops4j/pax/web/pax-web-features/6.0.7/**</exclude>
+                <exclude>org/apache/karaf/features/spring-legacy/${karaf.version}/spring-legacy-${karaf.version}-features.xml</exclude>
             </excludes>
         </fileSet>
 
@@ -605,6 +613,12 @@
         <file>
             <source>${basedir}/target/dependencies/activemq-karaf-${activemq.version}-features-core.xml</source>
             <outputDirectory>/container/system/org/apache/activemq/activemq-karaf/${activemq.version}/</outputDirectory>
+            <fileMode>0644</fileMode>
+            <lineEnding>unix</lineEnding>
+        </file>
+        <file>
+            <source>${basedir}/target/dependencies/spring-legacy-${karaf.version}-features.xml</source>
+            <outputDirectory>/container/system/org/apache/karaf/features/spring-legacy/${karaf.version}/</outputDirectory>
             <fileMode>0644</fileMode>
             <lineEnding>unix</lineEnding>
         </file>
