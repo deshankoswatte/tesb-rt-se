@@ -1,0 +1,84 @@
+/**
+ * Pod configuration
+ */
+
+def projectName = 'tesb-runtime-se'
+def podLabel = "${projectName}-${UUID.randomUUID().toString()}".take(53)
+def podConfiguration = """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: maven
+      image: jenkinsxio/builder-maven:0.0.441
+      command:
+      - cat
+      tty: true
+      volumeMounts:
+      - name: docker
+        mountPath: /var/run/docker.sock
+      - name: m2
+        mountPath: /root/.m2/repository
+  volumes:
+  - name: docker
+    hostPath:
+      path: /var/run/docker.sock
+  - name: m2
+    hostPath:
+      path: /tmp/jenkins/${projectName}/m2
+"""
+
+
+pipeline {
+
+      agent {
+            kubernetes {
+                  label podLabel
+                  yaml podConfiguration
+            }
+      }
+
+      triggers{
+              parameterizedCron('''
+                  H 3 * * 7 % CHECK_BRANCH=master
+              ''')
+      }
+
+      stages {
+
+            stage("Scan 3rd parties vulnerabilities") {
+                 steps {
+                        container('maven') {
+                              configFileProvider([configFile(fileId: 'maven-settings-nexus-zl', variable: 'MAVEN_SETTINGS')]) {
+                                    withCredentials([string(credentialsId: 'veracode-esb-token', variable: 'SRCCLR_API_TOKEN')]) {
+                                          sh """#!/bin/bash
+                                          # FIXME fishy to do that, will check another day
+                                          cp ${MAVEN_SETTINGS} ~/.m2/settings.xml
+                                          curl -sSL https://download.sourceclear.com/ci.sh | SRCCLR_API_TOKEN="${SRCCLR_API_TOKEN}" DEBUG=1 sh -s -- scan;
+                                          """
+                                    }
+                              }
+                        }
+                 }
+            }
+      }
+
+       post {
+             success {
+                      slackSend color: 'good', message: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", channel: 'esb_team_notification'
+             }
+
+             unstable {
+                      slackSend color: 'warning', message: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", channel: 'esb_team_notification'
+             }
+
+             failure {
+                      slackSend color: '#e81f3f', message: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", channel: 'esb_team_notification'
+             }
+
+             aborted {
+                      slackSend color: 'warning', message: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", channel: 'esb_team_notification'
+             }
+       }
+
+}
