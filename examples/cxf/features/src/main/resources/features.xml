@@ -2,7 +2,7 @@
 <features name="talend-cxf-examples-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
 
     <!--
-        Copyright (C) 2011-2019 Talend Inc. - www.talend.com
+        Copyright (C) 2011-2020 Talend Inc. - www.talend.com
     -->
 
     <feature name='talend-cxf-example-jaxrs-intro' version='${project.version}' resolver='(obr)'>
